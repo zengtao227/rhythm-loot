@@ -1,0 +1,789 @@
+/* ================================================
+   RHYTHM & LOOT - ULTIMATE CYBERPUNK DESIGN SYSTEM
+   ================================================ */
+
+/* === CSS Variables - The Power Source === */
+:root {
+  /* Core Dark Theme */
+  --bg-dark: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-card-hover: #1a1a25;
+  --bg-glass: rgba(18, 18, 26, 0.85);
+
+  /* Blink Stage Theme (Sister - K-pop) */
+  --blink-primary: #ff2d7f;
+  --blink-secondary: #ff6b9d;
+  --blink-accent: #ff91b8;
+  --blink-glow: rgba(255, 45, 127, 0.6);
+  --blink-gradient: linear-gradient(135deg, #ff2d7f 0%, #ff6b9d 50%, #c71585 100%);
+
+  /* Quest Loot Theme (Brother - Zelda/Adventure) */
+  --quest-primary: #00d4ff;
+  --quest-secondary: #00ffaa;
+  --quest-accent: #ffa500;
+  --quest-glow: rgba(0, 212, 255, 0.6);
+  --quest-gradient: linear-gradient(135deg, #00d4ff 0%, #00ffaa 50%, #00c896 100%);
+
+  /* Fortnite Theme */
+  --fortnite-primary: #9d4edd;
+  --fortnite-secondary: #f72585;
+  --fortnite-accent: #4cc9f0;
+  --fortnite-glow: rgba(157, 78, 221, 0.6);
+  --fortnite-gradient: linear-gradient(135deg, #9d4edd 0%, #f72585 50%, #4cc9f0 100%);
+
+  /* Rarity Colors */
+  --rarity-common: #9ca3af;
+  --rarity-uncommon: #22c55e;
+  --rarity-rare: #3b82f6;
+  --rarity-epic: #a855f7;
+  --rarity-legendary: #fbbf24;
+  --rarity-legendary-glow: rgba(251, 191, 36, 0.8);
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b0;
+  --text-muted: #6b6b7b;
+
+  /* Typography */
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Shadows */
+  --shadow-glow-pink: 0 0 40px var(--blink-glow), 0 0 80px var(--blink-glow);
+  --shadow-glow-cyan: 0 0 40px var(--quest-glow), 0 0 80px var(--quest-glow);
+  --shadow-glow-purple: 0 0 40px var(--fortnite-glow), 0 0 80px var(--fortnite-glow);
+}
+
+/* === Reset & Base === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Animated Background === */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(255, 45, 127, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+  animation: bgPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes bgPulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* === App Container === */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  padding: var(--space-md);
+}
+
+/* === Typography === */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.title-glow {
+  text-shadow:
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 40px currentColor;
+}
+
+/* === Glass Card Component === */
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  transition: all var(--transition-normal);
+}
+
+.glass-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* === Profile Selector Cards === */
+.profile-card {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  border: 2px solid transparent;
+}
+
+.profile-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.profile-card.blink::before {
+  background: var(--blink-gradient);
+}
+
+.profile-card.quest::before {
+  background: var(--quest-gradient);
+}
+
+.profile-card:hover::before {
+  opacity: 0.1;
+}
+
+.profile-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.profile-card.blink:hover {
+  border-color: var(--blink-primary);
+  box-shadow: var(--shadow-glow-pink);
+}
+
+.profile-card.quest:hover {
+  border-color: var(--quest-primary);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+/* === Buttons === */
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: var(--space-md) var(--space-xl);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.btn:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-blink {
+  background: var(--blink-gradient);
+  color: white;
+  box-shadow: 0 4px 20px var(--blink-glow);
+}
+
+.btn-blink:hover {
+  box-shadow: 0 8px 40px var(--blink-glow);
+  transform: translateY(-2px);
+}
+
+.btn-quest {
+  background: var(--quest-gradient);
+  color: #0a0a0f;
+  box-shadow: 0 4px 20px var(--quest-glow);
+}
+
+.btn-quest:hover {
+  box-shadow: 0 8px 40px var(--quest-glow);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--text-secondary);
+  color: var(--text-secondary);
+}
+
+.btn-outline:hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* === Timer Ring === */
+.timer-ring {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: var(--space-2xl) auto;
+}
+
+.timer-ring svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.timer-ring-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 8;
+}
+
+.timer-ring-progress {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.timer-ring-progress.blink {
+  stroke: url(#blinkGradient);
+  filter: drop-shadow(0 0 10px var(--blink-glow));
+}
+
+.timer-ring-progress.quest {
+  stroke: url(#questGradient);
+  filter: drop-shadow(0 0 10px var(--quest-glow));
+}
+
+.timer-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.timer-display {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.timer-display.blink {
+  color: var(--blink-primary);
+  text-shadow: 0 0 20px var(--blink-glow);
+}
+
+.timer-display.quest {
+  color: var(--quest-primary);
+  text-shadow: 0 0 20px var(--quest-glow);
+}
+
+.timer-display.fortnite {
+  color: var(--fortnite-primary);
+  text-shadow: 0 0 20px var(--fortnite-glow);
+}
+
+/* === Particle Canvas === */
+.particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* === Streak Counter === */
+.streak-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(251, 191, 36, 0.05));
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--rarity-legendary);
+}
+
+.streak-badge.active {
+  animation: streakPulse 2s ease-in-out infinite;
+}
+
+@keyframes streakPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.6);
+  }
+}
+
+/* === Loot Box === */
+.loot-box {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: var(--space-2xl) auto;
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
+.loot-box:hover {
+  animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+
+  75% {
+    transform: translateX(5px) rotate(3deg);
+  }
+}
+
+/* === Rarity Glow Effects === */
+.rarity-common {
+  border-color: var(--rarity-common);
+  box-shadow: 0 0 15px rgba(156, 163, 175, 0.3);
+}
+
+.rarity-uncommon {
+  border-color: var(--rarity-uncommon);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+  animation: uncommonGlow 2s ease-in-out infinite;
+}
+
+.rarity-rare {
+  border-color: var(--rarity-rare);
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+  animation: rareGlow 1.5s ease-in-out infinite;
+}
+
+.rarity-epic {
+  border-color: var(--rarity-epic);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+  animation: epicGlow 1s ease-in-out infinite;
+}
+
+.rarity-legendary {
+  border-color: var(--rarity-legendary);
+  box-shadow: 0 0 40px var(--rarity-legendary-glow);
+  animation: legendaryGlow 0.5s ease-in-out infinite;
+}
+
+@keyframes uncommonGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.6);
+  }
+}
+
+@keyframes rareGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+  }
+}
+
+@keyframes epicGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+  }
+
+  50% {
+    box-shadow: 0 0 50px rgba(168, 85, 247, 1);
+  }
+}
+
+@keyframes legendaryGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 40px var(--rarity-legendary-glow),
+      0 0 80px rgba(251, 191, 36, 0.4);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 60px var(--rarity-legendary-glow),
+      0 0 120px rgba(251, 191, 36, 0.6);
+    transform: scale(1.02);
+  }
+}
+
+/* === Inventory Grid === */
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: var(--space-md);
+  padding: var(--space-lg);
+}
+
+.inventory-item {
+  aspect-ratio: 1;
+  background: var(--bg-card);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.inventory-item:hover {
+  transform: scale(1.1);
+}
+
+/* === Audio Visualizer Bars === */
+.audio-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 60px;
+}
+
+.audio-bar {
+  width: 6px;
+  border-radius: 3px;
+  transition: height 0.1s ease;
+}
+
+.audio-bar.blink {
+  background: var(--blink-gradient);
+  box-shadow: 0 0 10px var(--blink-glow);
+}
+
+.audio-bar.quest {
+  background: var(--quest-gradient);
+  box-shadow: 0 0 10px var(--quest-glow);
+}
+
+.audio-bar.fortnite {
+  background: var(--fortnite-gradient);
+  box-shadow: 0 0 10px var(--fortnite-glow);
+}
+
+/* === Status Indicator === */
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: statusPulse 1.5s ease-in-out infinite;
+}
+
+.status-dot.listening {
+  background: #22c55e;
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.6);
+}
+
+.status-dot.paused {
+  background: #f59e0b;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
+  animation: none;
+}
+
+@keyframes statusPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* === Modal Overlay === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* === Reward Reveal Animation === */
+.reward-reveal {
+  animation: revealBurst 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes revealBurst {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+
+  60% {
+    transform: scale(1.2) rotate(10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* === Screen Shake for Legendary === */
+.screen-shake {
+  animation: screenShake 0.5s ease-in-out;
+}
+
+@keyframes screenShake {
+
+  0%,
+  100% {
+    transform: translate(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translate(-5px, 0);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translate(5px, 0);
+  }
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .timer-ring {
+    width: 240px;
+    height: 240px;
+  }
+
+  .timer-display {
+    font-size: 2.5rem;
+  }
+
+  .profile-card {
+    padding: var(--space-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .timer-ring {
+    width: 200px;
+    height: 200px;
+  }
+
+  .timer-display {
+    font-size: 2rem;
+  }
+}
+
+/* === Utility Classes === */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.gap-sm {
+  gap: var(--space-sm);
+}
+
+.gap-md {
+  gap: var(--space-md);
+}
+
+.gap-lg {
+  gap: var(--space-lg);
+}
+
+.mt-md {
+  margin-top: var(--space-md);
+}
+
+.mt-lg {
+  margin-top: var(--space-lg);
+}
+
+.mt-xl {
+  margin-top: var(--space-xl);
+}
+
+.mb-md {
+  margin-bottom: var(--space-md);
+}
+
+.mb-lg {
+  margin-bottom: var(--space-lg);
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.opacity-70 {
+  opacity: 0.7;
+}
