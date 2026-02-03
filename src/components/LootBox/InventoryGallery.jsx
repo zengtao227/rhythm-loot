@@ -71,7 +71,7 @@ export function InventoryGallery({
                         alignItems: 'center',
                     }}>
                         <AvatarViewer
-                            theme={theme === 'blink' ? themes.blink : themes.quest}
+                            theme={themes[theme]} // Simplified: map 'blink'|'quest'|'fortnite' directly to theme object
                             equippedItems={equippedItems}
                         />
 
