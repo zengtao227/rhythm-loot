@@ -297,6 +297,48 @@ function App() {
                         )}
                     </div>
 
+                    {/* BPM Selector */}
+                    <div className="glass-card mt-lg" style={{ width: '100%', maxWidth: '400px' }}>
+                        <p className="text-muted mb-md">Tempo (BPM)</p>
+                        <div className="flex-center gap-lg">
+                            <button
+                                className="btn btn-outline"
+                                style={{ width: '45px', height: '45px', padding: 0, borderRadius: '50%' }}
+                                onClick={() => setBpm(Math.max(40, bpm - 1))}
+                            >—</button>
+
+                            <div style={{ textAlign: 'center', minWidth: '80px' }}>
+                                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: theme.colors.primary }}>{bpm}</div>
+                                <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>beats per min</div>
+                            </div>
+
+                            <button
+                                className="btn btn-outline"
+                                style={{ width: '45px', height: '45px', padding: 0, borderRadius: '50%' }}
+                                onClick={() => setBpm(Math.min(200, bpm + 1))}
+                            >+</button>
+                        </div>
+
+                        <input
+                            type="range"
+                            min="40"
+                            max="200"
+                            value={bpm}
+                            onChange={(e) => setBpm(Number(e.target.value))}
+                            style={{
+                                width: '100%',
+                                marginTop: '1.5rem',
+                                accentColor: theme.colors.primary,
+                                cursor: 'pointer'
+                            }}
+                        />
+
+                        <div className="flex-between mt-sm" style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+                            <span>Adagio (40)</span>
+                            <span>Presto (200)</span>
+                        </div>
+                    </div>
+
                     {/* Start Button */}
                     <button
                         className={`btn btn-${selectedTheme} mt-xl`}
