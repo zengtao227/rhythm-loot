@@ -1,8 +1,8 @@
 // Theme configurations for both profiles
-// Asset base path for rewards
-const BLINK_ASSETS = '/src/assets/rewards/blink/v1';
-const QUEST_ASSETS = '/src/assets/rewards/quest/v1';
-const FORTNITE_ASSETS = '/src/assets/rewards/quest/v_fortnite';
+// Asset base path for rewards (Pointing to public folder for stability)
+const BLINK_ASSETS = '/assets/rewards/blink/v1';
+const QUEST_ASSETS = '/assets/rewards/quest/v1';
+const FORTNITE_ASSETS = '/assets/rewards/quest/v_fortnite';
 
 export const themes = {
     blink: {
@@ -34,6 +34,7 @@ export const themes = {
             { id: 'bl_r1', name: 'Crown Headband', rarity: 'rare', emoji: '👑', slot: 'head', image: `${BLINK_ASSETS}/blink_crown_headband_v1_1770124210699.png` },
             { id: 'bl_r2', name: 'LED Earrings', rarity: 'rare', emoji: '💎', slot: 'head', image: `${BLINK_ASSETS}/blink_led_earrings_1769897104599.png` },
             { id: 'bl_r3', name: 'Signed Album', rarity: 'rare', emoji: '💿', slot: 'misc', image: `${BLINK_ASSETS}/blink_signed_album_1769897118991.png` },
+            { id: 'bl_r4', name: 'Pink Sparkle Mic', rarity: 'rare', emoji: '🎤', slot: 'hand', image: `${BLINK_ASSETS}/blink_diamond_microphone_v1_new_1770124226307.png` },
             // Epic (4%)
             { id: 'bl_e1', name: 'Golden Lightstick', rarity: 'epic', emoji: '🌟', slot: 'hand', image: `${BLINK_ASSETS}/blink_golden_lightstick_1769897131759.png` },
             { id: 'bl_e2', name: 'Angel Wings', rarity: 'epic', emoji: '👼', slot: 'back', image: `${BLINK_ASSETS}/blink_angel_wings_1769898626049.png` },
