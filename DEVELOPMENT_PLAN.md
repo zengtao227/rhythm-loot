@@ -115,35 +115,37 @@ Prioritize creating high-tier items for "Quest Loot" to match "Blink Stage" qual
 
 ### Phase 3.5: Rhythm Core (Metronome) ✅ COMPLETE
 - [x] **Technical Core (`useMetronome`)**: Web Audio API based precision scheduling.
-- [x] Adjustable BPM (40-200).
-- [x] Theme-based sounds: "Electronic" for Blink, "Wood" for Quest.
+- [x] **New: Pre-Practice Setup**: Set tempo (40-200 BPM) on the configuration screen.
+- [x] Adjustable BPM with Slider + Precision +/- Buttons.
+- [x] Theme-based sounds: "Electronic" for Blink, "Wood" for Quest/Fortnite.
 - [x] **Visuals**: Timer ring pulses on beat when metronome active.
-- [x] **UI**: Minimalist toggle button with BPM slider.
 
-### Phase 4: Avatar System (The Dressing Room) 🚧 IN PROGRESS
+### Phase 4: Avatar System (The Dressing Room) ✅ COMPLETE (V1)
 - [x] **Data Structure Upgrade**: Added `slot` property to items (Head, Body, Back, Hand, Neck, Misc).
-- [ ] **Avatar Visuals**: Silhouette + Sticker overlays (Future).
-- [ ] **UI - Inventory Upgrade**: Split view with Avatar Preview (Future).
+- [x] **Split-View Dressing Room**: Preview character silhouette on the left, manage inventory on the right.
+- [x] **Premium Visuals**: Replaced blocks with dynamic SVG character silhouette + base light platform. 
+- [x] **Real-time Equipment**: Tap items to instantly see them on the avatar.
+- [x] **Robustness**: Automatic fallback to Emoji if reward image fails to load.
 
 ### Phase 5: Polish & Deployment 🚧 IN PROGRESS
-- [x] PWA Configuration (Manifest, iOS Meta Tags).
-- [ ] Generate actual PNG icons from SVG template.
-- [ ] Performance optimization (frame rate limiting for battery).
-- [ ] Final UI tweaks based on user feedback.
-- [ ] Deploy to hosting (Vercel/Netlify).
+- [x] **Asset Stability**: Moved all reward images to `public/` folder to resolve broken paths.
+- [x] **PWA Configuration**: Manifest, iOS Meta Tags, and standalone mode support.
+- [ ] **Final Polish**: Generate actual PNG icons for different mobile devices.
+- [ ] **Performance**: Frame rate limiting for battery saving during long practices.
+- [ ] **Deployment**: Final hosting on Vercel or Netlify for family use.
 
 ---
 
 ## 6. Asset Generation Status
 
-### Blink Stage (16 images) ✅ COMPLETE
-All reward images generated and integrated.
+### Blink Stage (17 images) ✅ COMPLETE
+Updated with "Pink Sparkle Mic" resource fix.
 
 ### Quest Loot (26 images) ✅ COMPLETE  
-All reward images generated and integrated.
+All reward images generated and integrated into the new public path.
 
 ### Fortnite Theme Pack (6 images) ✅ COMPLETE
-All images generated. Theme added to config.
+All images migrated to public folder. Theme fully selectable.
 
 ### 📋 待生成图片 (配额恢复后)
 
