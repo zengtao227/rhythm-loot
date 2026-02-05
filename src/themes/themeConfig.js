@@ -20,27 +20,27 @@ export const themes = {
         defaultDuration: 30, // minutes
         rewards: [
             // Common (50%)
-            { id: 'bl_c1', name: 'Mini Lightstick', rarity: 'common', emoji: '🔦', slot: 'hand', image: `${BLINK_ASSETS}/blink_mini_lightstick_1769896924277.png` },
-            { id: 'bl_c2', name: 'Concert Ticket', rarity: 'common', emoji: '🎫', slot: 'misc', image: `${BLINK_ASSETS}/blink_concert_ticket_1769896936216.png` },
-            { id: 'bl_c3', name: 'Fan Banner', rarity: 'common', emoji: '🏳️', slot: 'hand', image: `${BLINK_ASSETS}/blink_fan_banner_1769896948265.png` },
-            { id: 'bl_c4', name: 'Photo Card', rarity: 'common', emoji: '🖼️', slot: 'misc', image: `${BLINK_ASSETS}/blink_photo_card_1769896960590.png` },
-            { id: 'bl_c5', name: 'Stage Pass', rarity: 'common', emoji: '🎟️', slot: 'neck', image: `${BLINK_ASSETS}/blink_stage_pass_1769896974863.png` },
+            { id: 'bl_c1', name: 'Mini Lightstick', rarity: 'common', emoji: '🔦', slot: 'hand', image: `${BLINK_ASSETS}/blink_mini_lightstick_1769896924277.webp` },
+            { id: 'bl_c2', name: 'Concert Ticket', rarity: 'common', emoji: '🎫', slot: 'misc', image: `${BLINK_ASSETS}/blink_concert_ticket_1769896936216.webp` },
+            { id: 'bl_c3', name: 'Fan Banner', rarity: 'common', emoji: '🏳️', slot: 'hand', image: `${BLINK_ASSETS}/blink_fan_banner_1769896948265.webp` },
+            { id: 'bl_c4', name: 'Photo Card', rarity: 'common', emoji: '🖼️', slot: 'misc', image: `${BLINK_ASSETS}/blink_photo_card_1769896960590.webp` },
+            { id: 'bl_c5', name: 'Stage Pass', rarity: 'common', emoji: '🎟️', slot: 'neck', image: `${BLINK_ASSETS}/blink_stage_pass_1769896974863.webp` },
             // Uncommon (30%)
-            { id: 'bl_u1', name: 'Neon Bracelet', rarity: 'uncommon', emoji: '💫', slot: 'hand', image: `${BLINK_ASSETS}/blink_neon_bracelet_1769896993628.png` },
-            { id: 'bl_u2', name: 'VIP Lanyard', rarity: 'uncommon', emoji: '🎀', slot: 'neck', image: `${BLINK_ASSETS}/blink_vip_lanyard_v1_1770124180454.png` },
-            { id: 'bl_u3', name: 'Hologram Sticker', rarity: 'uncommon', emoji: '✨', slot: 'misc', image: `${BLINK_ASSETS}/blink_hologram_sticker_v1_1770124195628.png` },
-            { id: 'bl_u4', name: 'Cat Ears Headset', rarity: 'uncommon', emoji: '🎧', slot: 'head', image: `${BLINK_ASSETS}/blink_cat_ears_headset_1769898724226.png` },
+            { id: 'bl_u1', name: 'Neon Bracelet', rarity: 'uncommon', emoji: '💫', slot: 'hand', image: `${BLINK_ASSETS}/blink_neon_bracelet_1769896993628.webp` },
+            { id: 'bl_u2', name: 'VIP Lanyard', rarity: 'uncommon', emoji: '🎀', slot: 'neck', image: `${BLINK_ASSETS}/blink_vip_lanyard_v1_1770124180454.webp` },
+            { id: 'bl_u3', name: 'Hologram Sticker', rarity: 'uncommon', emoji: '✨', slot: 'misc', image: `${BLINK_ASSETS}/blink_hologram_sticker_v1_1770124195628.webp` },
+            { id: 'bl_u4', name: 'Cat Ears Headset', rarity: 'uncommon', emoji: '🎧', slot: 'head', image: `${BLINK_ASSETS}/blink_cat_ears_headset_1769898724226.webp` },
             // Rare (15%)
-            { id: 'bl_r1', name: 'Crown Headband', rarity: 'rare', emoji: '👑', slot: 'head', image: `${BLINK_ASSETS}/blink_crown_headband_v1_1770124210699.png` },
-            { id: 'bl_r2', name: 'LED Earrings', rarity: 'rare', emoji: '💎', slot: 'head', image: `${BLINK_ASSETS}/blink_led_earrings_1769897104599.png` },
-            { id: 'bl_r3', name: 'Signed Album', rarity: 'rare', emoji: '💿', slot: 'misc', image: `${BLINK_ASSETS}/blink_signed_album_1769897118991.png` },
-            { id: 'bl_r4', name: 'Pink Sparkle Mic', rarity: 'rare', emoji: '🎤', slot: 'hand', image: `${BLINK_ASSETS}/blink_diamond_microphone_v1_new_1770124226307.png` },
+            { id: 'bl_r1', name: 'Crown Headband', rarity: 'rare', emoji: '👑', slot: 'head', image: `${BLINK_ASSETS}/blink_crown_headband_v1_1770124210699.webp` },
+            { id: 'bl_r2', name: 'LED Earrings', rarity: 'rare', emoji: '💎', slot: 'head', image: `${BLINK_ASSETS}/blink_led_earrings_1769897104599.webp` },
+            { id: 'bl_r3', name: 'Signed Album', rarity: 'rare', emoji: '💿', slot: 'misc', image: `${BLINK_ASSETS}/blink_signed_album_1769897118991.webp` },
+            { id: 'bl_r4', name: 'Pink Sparkle Mic', rarity: 'rare', emoji: '🎤', slot: 'hand', image: `${BLINK_ASSETS}/blink_diamond_microphone_v1_new_1770124226307.webp` },
             // Epic (4%)
-            { id: 'bl_e1', name: 'Golden Lightstick', rarity: 'epic', emoji: '🌟', slot: 'hand', image: `${BLINK_ASSETS}/blink_golden_lightstick_1769897131759.png` },
-            { id: 'bl_e2', name: 'Angel Wings', rarity: 'epic', emoji: '👼', slot: 'back', image: `${BLINK_ASSETS}/blink_angel_wings_1769898626049.png` },
+            { id: 'bl_e1', name: 'Golden Lightstick', rarity: 'epic', emoji: '🌟', slot: 'hand', image: `${BLINK_ASSETS}/blink_golden_lightstick_1769897131759.webp` },
+            { id: 'bl_e2', name: 'Angel Wings', rarity: 'epic', emoji: '👼', slot: 'back', image: `${BLINK_ASSETS}/blink_angel_wings_1769898626049.webp` },
             // Legendary (1%)
-            { id: 'bl_l1', name: 'Diamond Microphone', rarity: 'legendary', emoji: '💖', slot: 'hand', image: `${BLINK_ASSETS}/blink_diamond_microphone_v1_new_1770124226307.png` },
-            { id: 'bl_l2', name: 'Galaxy Stage Outfit', rarity: 'legendary', emoji: '👗', slot: 'body', image: `${BLINK_ASSETS}/blink_galaxy_outfit_1769898660427.png` },
+            { id: 'bl_l1', name: 'Diamond Microphone', rarity: 'legendary', emoji: '💖', slot: 'hand', image: `${BLINK_ASSETS}/blink_diamond_microphone_v1_new_1770124226307.webp` },
+            { id: 'bl_l2', name: 'Galaxy Stage Outfit', rarity: 'legendary', emoji: '👗', slot: 'body', image: `${BLINK_ASSETS}/blink_galaxy_outfit_1769898660427.webp` },
         ],
     },
     quest: {
@@ -58,32 +58,32 @@ export const themes = {
         defaultDuration: 30, // minutes
         rewards: [
             // Common (50%)
-            { id: 'qt_c1', name: 'Wooden Sword', rarity: 'common', emoji: '🗡️', slot: 'hand', image: `${QUEST_ASSETS}/quest_wooden_sword_v2_1769897194589.png` },
-            { id: 'qt_c2', name: 'Iron Ingot', rarity: 'common', emoji: '🔩', slot: 'misc', image: `${QUEST_ASSETS}/quest_iron_ingot_v2_1769897207144.png` },
-            { id: 'qt_c3', name: 'Treasure Map', rarity: 'common', emoji: '🗺️', slot: 'misc', image: `${QUEST_ASSETS}/quest_treasure_map_v2_1769897219549.png` },
-            { id: 'qt_c4', name: 'Copper Coin', rarity: 'common', emoji: '🪙', slot: 'misc', image: `${QUEST_ASSETS}/quest_copper_coin_1769897231090.png` },
-            { id: 'qt_c5', name: 'Explorer Hat', rarity: 'common', emoji: '🎩', slot: 'head', image: `${QUEST_ASSETS}/quest_explorer_hat_1769897244334.png` },
-            { id: 'qt_c6', name: 'Heart Container', rarity: 'common', emoji: '❤️', slot: 'misc', image: `${QUEST_ASSETS}/zelda_heart_container_common_1770299578346.png` },
-            { id: 'qt_c7', name: 'Korok Seed', rarity: 'common', emoji: '🌱', slot: 'misc', image: `${QUEST_ASSETS}/zelda_korok_seed_common_1770299601611.png` },
+            { id: 'qt_c1', name: 'Wooden Sword', rarity: 'common', emoji: '🗡️', slot: 'hand', image: `${QUEST_ASSETS}/quest_wooden_sword_v2_1769897194589.webp` },
+            { id: 'qt_c2', name: 'Iron Ingot', rarity: 'common', emoji: '🔩', slot: 'misc', image: `${QUEST_ASSETS}/quest_iron_ingot_v2_1769897207144.webp` },
+            { id: 'qt_c3', name: 'Treasure Map', rarity: 'common', emoji: '🗺️', slot: 'misc', image: `${QUEST_ASSETS}/quest_treasure_map_v2_1769897219549.webp` },
+            { id: 'qt_c4', name: 'Copper Coin', rarity: 'common', emoji: '🪙', slot: 'misc', image: `${QUEST_ASSETS}/quest_copper_coin_1769897231090.webp` },
+            { id: 'qt_c5', name: 'Explorer Hat', rarity: 'common', emoji: '🎩', slot: 'head', image: `${QUEST_ASSETS}/quest_explorer_hat_1769897244334.webp` },
+            { id: 'qt_c6', name: 'Heart Container', rarity: 'common', emoji: '❤️', slot: 'misc', image: `${QUEST_ASSETS}/zelda_heart_container_common_1770299578346.webp` },
+            { id: 'qt_c7', name: 'Korok Seed', rarity: 'common', emoji: '🌱', slot: 'misc', image: `${QUEST_ASSETS}/zelda_korok_seed_common_1770299601611.webp` },
             // Uncommon (30%)
-            { id: 'qt_u1', name: 'Sheikah Slate', rarity: 'uncommon', emoji: '📱', slot: 'hand', image: `${QUEST_ASSETS}/quest_sheikah_slate_1769897261806.png` },
-            { id: 'qt_u2', name: 'Golden Scarf', rarity: 'uncommon', emoji: '🧣', slot: 'neck', image: `${QUEST_ASSETS}/quest_golden_scarf_v1_new_1770124239976.png` },
-            { id: 'qt_u3', name: 'Magic Compass', rarity: 'uncommon', emoji: '🧭', slot: 'hand', image: `${QUEST_ASSETS}/quest_magic_compass_v1_1769897368908.png` },
-            { id: 'qt_u4', name: 'Crystal Shard', rarity: 'uncommon', emoji: '💠', slot: 'misc', image: `${QUEST_ASSETS}/quest_crystal_shard_v1_1769897382909.png` },
-            { id: 'qt_u5', name: 'Power Star', rarity: 'uncommon', emoji: '⭐', slot: 'misc', image: `${QUEST_ASSETS}/quest_power_star_v1_1769897356747.png` },
-            { id: 'qt_u6', name: 'Hylian Shield', rarity: 'uncommon', emoji: '🛡️', slot: 'hand', image: `${QUEST_ASSETS}/zelda_hylian_shield_uncommon_1770299620948.png` },
+            { id: 'qt_u1', name: 'Sheikah Slate', rarity: 'uncommon', emoji: '📱', slot: 'hand', image: `${QUEST_ASSETS}/quest_sheikah_slate_1769897261806.webp` },
+            { id: 'qt_u2', name: 'Golden Scarf', rarity: 'uncommon', emoji: '🧣', slot: 'neck', image: `${QUEST_ASSETS}/quest_golden_scarf_v1_new_1770124239976.webp` },
+            { id: 'qt_u3', name: 'Magic Compass', rarity: 'uncommon', emoji: '🧭', slot: 'hand', image: `${QUEST_ASSETS}/quest_magic_compass_v1_1769897368908.webp` },
+            { id: 'qt_u4', name: 'Crystal Shard', rarity: 'uncommon', emoji: '💠', slot: 'misc', image: `${QUEST_ASSETS}/quest_crystal_shard_v1_1769897382909.webp` },
+            { id: 'qt_u5', name: 'Power Star', rarity: 'uncommon', emoji: '⭐', slot: 'misc', image: `${QUEST_ASSETS}/quest_power_star_v1_1769897356747.webp` },
+            { id: 'qt_u6', name: 'Hylian Shield', rarity: 'uncommon', emoji: '🛡️', slot: 'hand', image: `${QUEST_ASSETS}/zelda_hylian_shield_uncommon_1770299620948.webp` },
             // Rare (15%)
-            { id: 'qt_r1', name: 'Diamond Pickaxe', rarity: 'rare', emoji: '⛏️', slot: 'hand', image: `${QUEST_ASSETS}/quest_diamond_pickaxe_v1_1769897395799.png` },
-            { id: 'qt_r2', name: 'Golden Crown', rarity: 'rare', emoji: '👑', slot: 'head', image: `${QUEST_ASSETS}/quest_golden_crown_1769898741006.png` },
-            { id: 'qt_r3', name: 'Thunder Cape', rarity: 'rare', emoji: '⚡', slot: 'back', image: `${QUEST_ASSETS}/quest_thunder_cape_1769898643511.png` },
-            { id: 'qt_r4', name: 'Straw Hat', rarity: 'rare', emoji: '👒', slot: 'head', image: `${QUEST_ASSETS}/quest_straw_hat_luffy_v1_new_1769897464074.png` },
-            { id: 'qt_r5', name: 'Ender Pearl', rarity: 'rare', emoji: '🔮', slot: 'misc', image: `${QUEST_ASSETS}/quest_ender_pearl_v1_1769897476903.png` },
-            { id: 'qt_r6', name: 'Ocarina of Time', rarity: 'rare', emoji: '🎶', slot: 'hand', image: `${QUEST_ASSETS}/zelda_ocarina_of_time_rare_1770299642102.png` },
+            { id: 'qt_r1', name: 'Diamond Pickaxe', rarity: 'rare', emoji: '⛏️', slot: 'hand', image: `${QUEST_ASSETS}/quest_diamond_pickaxe_v1_1769897395799.webp` },
+            { id: 'qt_r2', name: 'Golden Crown', rarity: 'rare', emoji: '👑', slot: 'head', image: `${QUEST_ASSETS}/quest_golden_crown_1769898741006.webp` },
+            { id: 'qt_r3', name: 'Thunder Cape', rarity: 'rare', emoji: '⚡', slot: 'back', image: `${QUEST_ASSETS}/quest_thunder_cape_1769898643511.webp` },
+            { id: 'qt_r4', name: 'Straw Hat', rarity: 'rare', emoji: '👒', slot: 'head', image: `${QUEST_ASSETS}/quest_straw_hat_luffy_v1_new_1769897464074.webp` },
+            { id: 'qt_r5', name: 'Ender Pearl', rarity: 'rare', emoji: '🔮', slot: 'misc', image: `${QUEST_ASSETS}/quest_ender_pearl_v1_1769897476903.webp` },
+            { id: 'qt_r6', name: 'Ocarina of Time', rarity: 'rare', emoji: '🎶', slot: 'hand', image: `${QUEST_ASSETS}/zelda_ocarina_of_time_rare_1770299642102.webp` },
             // Epic (4%)
-            { id: 'qt_e1', name: 'Master Sword', rarity: 'epic', emoji: '🔱', slot: 'hand', image: `${QUEST_ASSETS}/quest_master_sword_v1_1769897407601.png` },
-            { id: 'qt_e2', name: 'Devil Fruit', rarity: 'epic', emoji: '🍇', slot: 'misc', image: `${QUEST_ASSETS}/quest_devil_fruit_v1_new_1769897489828.png` },
+            { id: 'qt_e1', name: 'Master Sword', rarity: 'epic', emoji: '🔱', slot: 'hand', image: `${QUEST_ASSETS}/quest_master_sword_v1_1769897407601.webp` },
+            { id: 'qt_e2', name: 'Devil Fruit', rarity: 'epic', emoji: '🍇', slot: 'misc', image: `${QUEST_ASSETS}/quest_devil_fruit_v1_new_1769897489828.webp` },
             // Legendary (1%)
-            { id: 'qt_l1', name: 'Triforce Fragment', rarity: 'legendary', emoji: '🔺', slot: 'misc', image: `${QUEST_ASSETS}/quest_triforce_v1_new_1769897503305.png` },
+            { id: 'qt_l1', name: 'Triforce Fragment', rarity: 'legendary', emoji: '🔺', slot: 'misc', image: `${QUEST_ASSETS}/quest_triforce_v1_new_1769897503305.webp` },
         ],
     },
     // Fortnite Theme Pack (can be swapped in for quest)
@@ -102,17 +102,17 @@ export const themes = {
         defaultDuration: 30,
         rewards: [
             // Common (50%)
-            { id: 'fn_c1', name: 'V-Bucks', rarity: 'common', emoji: '💰', slot: 'misc', image: `${FORTNITE_ASSETS}/quest_fortnite_vbucks_1770125358581.png` },
-            { id: 'fn_c2', name: 'Slurp Juice', rarity: 'common', emoji: '🧃', slot: 'misc', image: `${FORTNITE_ASSETS}/quest_fortnite_slurp_1770125376129.png` },
+            { id: 'fn_c1', name: 'V-Bucks', rarity: 'common', emoji: '💰', slot: 'misc', image: `${FORTNITE_ASSETS}/quest_fortnite_vbucks_1770125358581.webp` },
+            { id: 'fn_c2', name: 'Slurp Juice', rarity: 'common', emoji: '🧃', slot: 'misc', image: `${FORTNITE_ASSETS}/quest_fortnite_slurp_1770125376129.webp` },
             // Uncommon (30%)
-            { id: 'fn_u1', name: 'Supply Llama', rarity: 'uncommon', emoji: '🦙', slot: 'misc', image: `${FORTNITE_ASSETS}/quest_fortnite_llama_1770125341642.png` },
-            { id: 'fn_u2', name: 'Boogie Bomb', rarity: 'uncommon', emoji: '🪩', slot: 'hand', image: `${FORTNITE_ASSETS}/quest_fortnite_boogie_bomb_1770125389011.png` },
+            { id: 'fn_u1', name: 'Supply Llama', rarity: 'uncommon', emoji: '🦙', slot: 'misc', image: `${FORTNITE_ASSETS}/quest_fortnite_llama_1770125341642.webp` },
+            { id: 'fn_u2', name: 'Boogie Bomb', rarity: 'uncommon', emoji: '🪩', slot: 'hand', image: `${FORTNITE_ASSETS}/quest_fortnite_boogie_bomb_1770125389011.webp` },
             // Rare (15%)
-            { id: 'fn_r1', name: 'Battle Bus', rarity: 'rare', emoji: '🚌', slot: 'misc', image: `${FORTNITE_ASSETS}/quest_fortnite_battle_bus_1770125403708.png` },
-            { id: 'fn_r2', name: 'Chug Jug', rarity: 'rare', emoji: '🍶', slot: 'misc', image: `${FORTNITE_ASSETS}/fortnite_chug_jug_rare_1770299558096.png` },
-            { id: 'fn_e1', name: 'Mecha Mask', rarity: 'epic', emoji: '🤖', slot: 'head', image: `${FORTNITE_ASSETS}/fortnite_mecha_mask_epic_1770299528557.png` },
+            { id: 'fn_r1', name: 'Battle Bus', rarity: 'rare', emoji: '🚌', slot: 'misc', image: `${FORTNITE_ASSETS}/quest_fortnite_battle_bus_1770125403708.webp` },
+            { id: 'fn_r2', name: 'Chug Jug', rarity: 'rare', emoji: '🍶', slot: 'misc', image: `${FORTNITE_ASSETS}/fortnite_chug_jug_rare_1770299558096.webp` },
+            { id: 'fn_e1', name: 'Mecha Mask', rarity: 'epic', emoji: '🤖', slot: 'head', image: `${FORTNITE_ASSETS}/fortnite_mecha_mask_epic_1770299528557.webp` },
             // Legendary (1%)
-            { id: 'fn_l1', name: 'Golden Scar', rarity: 'legendary', emoji: '🔫', slot: 'hand', image: `${FORTNITE_ASSETS}/quest_fortnite_golden_scar_1770125429253.png` },
+            { id: 'fn_l1', name: 'Golden Scar', rarity: 'legendary', emoji: '🔫', slot: 'hand', image: `${FORTNITE_ASSETS}/quest_fortnite_golden_scar_1770125429253.webp` },
         ],
     },
 };
