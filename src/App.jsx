@@ -247,7 +247,7 @@ function App() {
                     {/* Back Button */}
                     <button
                         className="btn btn-outline"
-                        onClick={() => setScreen(SCREEN.SELECT)}
+                        onClick={() => changeScreen(SCREEN.SELECT)}
                         style={{
                             position: 'absolute',
                             top: '1rem',
@@ -373,7 +373,7 @@ function App() {
 
             {/* ========== PRACTICE SCREEN ========== */}
             {screen === SCREEN.PRACTICE && theme && (
-                <div style={{
+                <div className={screenTransition} style={{
                     flex: 1,
                     display: 'flex',
                     flexDirection: 'column',
