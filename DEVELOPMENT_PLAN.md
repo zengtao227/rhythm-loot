@@ -150,20 +150,16 @@ Updated with "Pink Sparkle Mic" resource fix.
 ### Quest Loot (26 images) ✅ COMPLETE  
 All reward images generated and integrated into the new public path.
 
-### Fortnite Theme Pack (6 images) ✅ COMPLETE
-All images migrated to public folder. Theme fully selectable.
+### Fortnite Theme Pack (8 images) ✅ COMPLETE
+All images generated (including Mecha Mask and Chug Jug). All migrated to public folder.
 
-### 📋 待生成图片 (配额恢复后)
+### 📋 待生成图片 (目前配额已用完，预计下周恢复)
 
-**Fortnite 补充**:
-- Mecha Team Leader Mask (Epic)
-- Chug Jug (Rare)
-
-**Zelda Classic Pack (新增)**:
-- Heart Container (Common)
-- Korok Seed (Common)
-- Hylian Shield (Uncommon)
-- Ocarina of Time (Rare)
+**Zelda Classic Pack (部分完成)**:
+- Heart Container (Common) ✅
+- Korok Seed (Common) ✅
+- Hylian Shield (Uncommon) ✅
+- Ocarina of Time (Rare) ✅
 - Fairy Bottle (Uncommon)
 - Light Arrows (Epic)
 
@@ -420,7 +416,228 @@ npm run preview
 - 部署脚本 ✅
 
 **待完成**: 
+- 验证构建 (2 分钟)
 - 实际部署到线上 (5 分钟)
 - 移动设备测试 (10 分钟)
+
+---
+
+## 9. 下一步操作指南（给接手的 AI 或开发者）
+
+### 🔍 第一步：验证构建（必须）
+
+在部署之前，必须验证代码可以正常构建：
+
+```bash
+# 1. 清理并重新安装依赖（如果需要）
+rm -rf node_modules package-lock.json
+npm install
+
+# 2. 运行构建命令
+npm run build
+
+# 3. 检查构建输出
+# 应该看到 "dist" 文件夹被创建
+# 没有错误信息
+
+# 4. 本地预览构建结果
+npm run preview
+
+# 5. 在浏览器中测试
+# 访问 http://localhost:4173
+# 测试以下功能：
+# - 选择主题
+# - 设置练习时长和 BPM
+# - 开始练习（允许麦克风权限）
+# - 双击画布查看 FPS 统计
+# - 完成练习查看开箱动画
+# - 测试音效和震动（需要在移动设备上）
+```
+
+**如果构建失败**：
+- 检查控制台错误信息
+- 运行 `npm run dev` 查看开发环境是否正常
+- 检查所有导入路径是否正确
+- 确认所有新建文件都已保存
+
+### 🚀 第二步：部署到 Vercel（推荐）
+
+```bash
+# 1. 安装 Vercel CLI（如果还没有）
+npm install -g vercel
+
+# 2. 登录 Vercel
+vercel login
+# 按照提示完成登录
+
+# 3. 部署到生产环境
+vercel --prod
+
+# 4. 按照提示操作：
+# - Set up and deploy? [Y/n] → Y
+# - Which scope? → 选择你的账号
+# - Link to existing project? [y/N] → N
+# - What's your project's name? → rhythm-loot
+# - In which directory is your code located? → ./
+# - Want to override the settings? [y/N] → N
+
+# 5. 等待部署完成
+# 你会得到一个 URL，类似：
+# https://rhythm-loot-xxx.vercel.app
+
+# 6. 访问 URL 测试应用
+```
+
+### 🌐 第三步：部署到 Netlify（备选方案）
+
+```bash
+# 1. 安装 Netlify CLI（如果还没有）
+npm install -g netlify-cli
+
+# 2. 登录 Netlify
+netlify login
+# 浏览器会打开，完成授权
+
+# 3. 初始化项目
+netlify init
+
+# 4. 按照提示操作：
+# - Create & configure a new site? → Yes
+# - Team → 选择你的团队
+# - Site name → rhythm-loot（或留空自动生成）
+# - Build command → npm run build
+# - Directory to deploy → dist
+# - Netlify functions folder → 留空
+
+# 5. 部署
+netlify deploy --prod
+
+# 6. 确认部署
+# 你会得到一个 URL，类似：
+# https://rhythm-loot.netlify.app
+```
+
+### 📱 第四步：移动设备测试
+
+**在 Android 设备上测试**：
+
+1. 使用 Chrome 浏览器访问部署的 URL
+2. 测试以下功能：
+   - [ ] 允许麦克风权限
+   - [ ] 音频检测是否正常工作
+   - [ ] 计时器是否准确
+   - [ ] 粒子动画是否流畅
+   - [ ] 双击画布查看 FPS（应该在 50-60 之间）
+   - [ ] 完成练习后的开箱动画
+   - [ ] 音效是否播放（需要取消静音）
+   - [ ] 震动反馈是否工作
+   - [ ] 屏幕过渡动画是否流畅
+
+3. 安装为 PWA：
+   - [ ] 点击浏览器菜单（三个点）
+   - [ ] 选择"添加到主屏幕"
+   - [ ] 确认安装
+   - [ ] 从主屏幕启动应用
+   - [ ] 测试离线功能（关闭网络后重新打开）
+
+**在 iOS 设备上测试**：
+
+1. 使用 Safari 浏览器访问部署的 URL
+2. 测试基本功能（同上）
+3. 安装为 PWA：
+   - [ ] 点击分享按钮
+   - [ ] 选择"添加到主屏幕"
+   - [ ] 确认添加
+   - [ ] 从主屏幕启动应用
+
+### ⚠️ 已知限制和注意事项
+
+1. **音效系统**：
+   - iOS Safari 可能需要用户交互后才能播放音效
+   - 某些浏览器可能阻止自动播放音频
+
+2. **震动反馈**：
+   - iOS 不支持 Vibration API
+   - 只在 Android Chrome 上有效
+
+3. **麦克风权限**：
+   - 必须使用 HTTPS（Vercel/Netlify 自动提供）
+   - 用户必须手动授权
+
+4. **Service Worker**：
+   - 首次访问不会缓存
+   - 需要刷新页面才能激活新版本
+
+### 🐛 常见问题排查
+
+**问题 1：构建失败**
+```bash
+# 解决方案：
+npm run dev  # 先在开发环境测试
+# 查看控制台错误
+# 修复后再次构建
+```
+
+**问题 2：部署后白屏**
+```bash
+# 检查浏览器控制台
+# 通常是路径问题或 Service Worker 问题
+# 解决方案：清除浏览器缓存，硬刷新（Ctrl+Shift+R）
+```
+
+**问题 3：音频不工作**
+```bash
+# 检查：
+# 1. 是否使用 HTTPS
+# 2. 是否授权了麦克风权限
+# 3. 浏览器控制台是否有错误
+```
+
+**问题 4：FPS 很低**
+```bash
+# 可能原因：
+# 1. 设备性能较低
+# 2. 粒子数量过多
+# 解决方案：在 ParticleCanvas.jsx 中减少粒子数量
+```
+
+### 📊 部署后的监控
+
+**Vercel**：
+- 访问 vercel.com/dashboard
+- 查看部署状态和访问统计
+- 查看构建日志
+
+**Netlify**：
+- 访问 app.netlify.com
+- 查看部署状态
+- 查看表单提交（如果有）
+
+### ✅ 最终检查清单
+
+部署完成后，确认以下所有项目：
+
+- [ ] 构建成功无错误
+- [ ] 本地预览正常工作
+- [ ] 部署到 Vercel 或 Netlify 成功
+- [ ] 生产环境 URL 可以访问
+- [ ] 在 Android 设备上测试通过
+- [ ] PWA 可以安装到主屏幕
+- [ ] 离线功能正常工作
+- [ ] 音频检测正常
+- [ ] 开箱动画流畅
+- [ ] 性能监控显示正常（FPS > 50）
+- [ ] 分享 URL 给家人
+
+### 🎯 成功标准
+
+项目部署成功的标志：
+
+1. ✅ 应用可以在移动设备上流畅运行
+2. ✅ 音频检测准确，计时器正常工作
+3. ✅ 开箱动画有音效和震动反馈
+4. ✅ 可以安装为 PWA 并离线使用
+5. ✅ FPS 保持在 50-60 之间
+6. ✅ 家人可以正常使用并享受练习过程
 
 ---

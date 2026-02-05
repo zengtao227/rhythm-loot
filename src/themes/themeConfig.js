@@ -63,18 +63,22 @@ export const themes = {
             { id: 'qt_c3', name: 'Treasure Map', rarity: 'common', emoji: '🗺️', slot: 'misc', image: `${QUEST_ASSETS}/quest_treasure_map_v2_1769897219549.png` },
             { id: 'qt_c4', name: 'Copper Coin', rarity: 'common', emoji: '🪙', slot: 'misc', image: `${QUEST_ASSETS}/quest_copper_coin_1769897231090.png` },
             { id: 'qt_c5', name: 'Explorer Hat', rarity: 'common', emoji: '🎩', slot: 'head', image: `${QUEST_ASSETS}/quest_explorer_hat_1769897244334.png` },
+            { id: 'qt_c6', name: 'Heart Container', rarity: 'common', emoji: '❤️', slot: 'misc', image: `${QUEST_ASSETS}/zelda_heart_container_common_1770299578346.png` },
+            { id: 'qt_c7', name: 'Korok Seed', rarity: 'common', emoji: '🌱', slot: 'misc', image: `${QUEST_ASSETS}/zelda_korok_seed_common_1770299601611.png` },
             // Uncommon (30%)
             { id: 'qt_u1', name: 'Sheikah Slate', rarity: 'uncommon', emoji: '📱', slot: 'hand', image: `${QUEST_ASSETS}/quest_sheikah_slate_1769897261806.png` },
             { id: 'qt_u2', name: 'Golden Scarf', rarity: 'uncommon', emoji: '🧣', slot: 'neck', image: `${QUEST_ASSETS}/quest_golden_scarf_v1_new_1770124239976.png` },
             { id: 'qt_u3', name: 'Magic Compass', rarity: 'uncommon', emoji: '🧭', slot: 'hand', image: `${QUEST_ASSETS}/quest_magic_compass_v1_1769897368908.png` },
             { id: 'qt_u4', name: 'Crystal Shard', rarity: 'uncommon', emoji: '💠', slot: 'misc', image: `${QUEST_ASSETS}/quest_crystal_shard_v1_1769897382909.png` },
             { id: 'qt_u5', name: 'Power Star', rarity: 'uncommon', emoji: '⭐', slot: 'misc', image: `${QUEST_ASSETS}/quest_power_star_v1_1769897356747.png` },
+            { id: 'qt_u6', name: 'Hylian Shield', rarity: 'uncommon', emoji: '🛡️', slot: 'hand', image: `${QUEST_ASSETS}/zelda_hylian_shield_uncommon_1770299620948.png` },
             // Rare (15%)
             { id: 'qt_r1', name: 'Diamond Pickaxe', rarity: 'rare', emoji: '⛏️', slot: 'hand', image: `${QUEST_ASSETS}/quest_diamond_pickaxe_v1_1769897395799.png` },
             { id: 'qt_r2', name: 'Golden Crown', rarity: 'rare', emoji: '👑', slot: 'head', image: `${QUEST_ASSETS}/quest_golden_crown_1769898741006.png` },
             { id: 'qt_r3', name: 'Thunder Cape', rarity: 'rare', emoji: '⚡', slot: 'back', image: `${QUEST_ASSETS}/quest_thunder_cape_1769898643511.png` },
             { id: 'qt_r4', name: 'Straw Hat', rarity: 'rare', emoji: '👒', slot: 'head', image: `${QUEST_ASSETS}/quest_straw_hat_luffy_v1_new_1769897464074.png` },
             { id: 'qt_r5', name: 'Ender Pearl', rarity: 'rare', emoji: '🔮', slot: 'misc', image: `${QUEST_ASSETS}/quest_ender_pearl_v1_1769897476903.png` },
+            { id: 'qt_r6', name: 'Ocarina of Time', rarity: 'rare', emoji: '🎶', slot: 'hand', image: `${QUEST_ASSETS}/zelda_ocarina_of_time_rare_1770299642102.png` },
             // Epic (4%)
             { id: 'qt_e1', name: 'Master Sword', rarity: 'epic', emoji: '🔱', slot: 'hand', image: `${QUEST_ASSETS}/quest_master_sword_v1_1769897407601.png` },
             { id: 'qt_e2', name: 'Devil Fruit', rarity: 'epic', emoji: '🍇', slot: 'misc', image: `${QUEST_ASSETS}/quest_devil_fruit_v1_new_1769897489828.png` },
@@ -105,6 +109,8 @@ export const themes = {
             { id: 'fn_u2', name: 'Boogie Bomb', rarity: 'uncommon', emoji: '🪩', slot: 'hand', image: `${FORTNITE_ASSETS}/quest_fortnite_boogie_bomb_1770125389011.png` },
             // Rare (15%)
             { id: 'fn_r1', name: 'Battle Bus', rarity: 'rare', emoji: '🚌', slot: 'misc', image: `${FORTNITE_ASSETS}/quest_fortnite_battle_bus_1770125403708.png` },
+            { id: 'fn_r2', name: 'Chug Jug', rarity: 'rare', emoji: '🍶', slot: 'misc', image: `${FORTNITE_ASSETS}/fortnite_chug_jug_rare_1770299558096.png` },
+            { id: 'fn_e1', name: 'Mecha Mask', rarity: 'epic', emoji: '🤖', slot: 'head', image: `${FORTNITE_ASSETS}/fortnite_mecha_mask_epic_1770299528557.png` },
             // Legendary (1%)
             { id: 'fn_l1', name: 'Golden Scar', rarity: 'legendary', emoji: '🔫', slot: 'hand', image: `${FORTNITE_ASSETS}/quest_fortnite_golden_scar_1770125429253.png` },
         ],
