@@ -3,6 +3,7 @@ import { themes } from './themes/themeConfig';
 import { useAudioTracker } from './hooks/useAudioTracker';
 import { useInventory } from './hooks/useInventory';
 import { useMetronome } from './hooks/useMetronome';
+import { injectAnimations } from './utils/uiEffects';
 import ProfileCard from './components/UI/ProfileCard';
 import TimerRing from './components/UI/TimerRing';
 import AudioBars from './components/AudioViz/AudioBars';
@@ -19,8 +20,14 @@ const SCREEN = {
 };
 
 function App() {
+    // Inject UI effect animations on mount
+    useEffect(() => {
+        injectAnimations();
+    }, []);
+
     // Core state
     const [screen, setScreen] = useState(SCREEN.SELECT);
+    const [screenTransition, setScreenTransition] = useState('');
     const [selectedTheme, setSelectedTheme] = useState(null);
     const [targetDuration, setTargetDuration] = useState(30); // minutes
     const [elapsedSeconds, setElapsedSeconds] = useState(0);
@@ -66,6 +73,15 @@ function App() {
         toggleEquip
     } = useInventory(selectedTheme || 'blink');
 
+    // Helper function to change screen with transition
+    const changeScreen = (newScreen) => {
+        setScreenTransition('screen-transition-exit');
+        setTimeout(() => {
+            setScreen(newScreen);
+            setScreenTransition('screen-transition-enter');
+        }, 400);
+    };
+
     // Timer logic - only counts when actively playing
     useEffect(() => {
         if (screen !== SCREEN.PRACTICE || !isActive) return;
@@ -108,20 +124,20 @@ function App() {
     const handleStartPractice = async () => {
         setElapsedSeconds(0);
         await startListening();
-        setScreen(SCREEN.PRACTICE);
+        changeScreen(SCREEN.PRACTICE);
     };
 
     // Cancel/stop practice
     const handleStopPractice = () => {
         stopListening();
         setElapsedSeconds(0);
-        setScreen(SCREEN.SELECT);
+        changeScreen(SCREEN.SELECT);
     };
 
     // Close reward modal and return to select
     const handleRewardClose = () => {
         setCurrentReward(null);
-        setScreen(SCREEN.SELECT);
+        changeScreen(SCREEN.SELECT);
         setSelectedTheme(null);
     };
 
@@ -141,7 +157,7 @@ function App() {
 
             {/* ========== PROFILE SELECT SCREEN ========== */}
             {screen === SCREEN.SELECT && (
-                <div style={{
+                <div className={screenTransition} style={{
                     flex: 1,
                     display: 'flex',
                     flexDirection: 'column',
@@ -197,7 +213,7 @@ function App() {
                         <div className="text-center mt-xl" style={{ animation: 'fadeIn 0.3s ease' }}>
                             <button
                                 className={`btn btn-${selectedTheme}`}
-                                onClick={() => setScreen(SCREEN.SETUP)}
+                                onClick={() => changeScreen(SCREEN.SETUP)}
                             >
                                 Continue
                             </button>
@@ -220,7 +236,7 @@ function App() {
 
             {/* ========== SETUP SCREEN ========== */}
             {screen === SCREEN.SETUP && theme && (
-                <div style={{
+                <div className={screenTransition} style={{
                     flex: 1,
                     display: 'flex',
                     flexDirection: 'column',

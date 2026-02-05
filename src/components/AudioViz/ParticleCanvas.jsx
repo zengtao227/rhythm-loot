@@ -1,24 +1,45 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { createFrameLimiter, FPSMonitor } from '../../utils/performanceUtils';
 
 /**
  * Audio-reactive particle system for visual feedback
+ * Optimized with frame rate limiting and performance monitoring
  */
 export function ParticleCanvas({ theme, audioLevel, isActive }) {
     const canvasRef = useRef(null);
     const particlesRef = useRef([]);
     const animationRef = useRef(null);
+    const fpsMonitorRef = useRef(new FPSMonitor());
+    const [showStats, setShowStats] = useState(false);
+    const [fps, setFps] = useState(0);
+    const [particleCount, setParticleCount] = useState(0);
+
+    // Frame rate limiter - 60fps for active practice, 30fps for idle
+    const targetFPS = isActive ? 60 : 30;
+    const frameLimiterRef = useRef(createFrameLimiter(targetFPS));
+
+    // Update frame limiter when FPS target changes
+    useEffect(() => {
+        frameLimiterRef.current = createFrameLimiter(targetFPS);
+    }, [targetFPS]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
         const resizeCanvas = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         };
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
+
+        // Performance stats update interval
+        const statsInterval = setInterval(() => {
+            setFps(fpsMonitorRef.current.getFPS());
+            setParticleCount(particlesRef.current.length);
+        }, 500);
 
         // Theme colors
         const colors = theme === 'blink'
@@ -77,27 +98,34 @@ export function ParticleCanvas({ theme, audioLevel, isActive }) {
             particlesRef.current.push(new Particle());
         }
 
-        // Animation loop
+        // Animation loop with frame rate limiting
+        let isRunning = true;
         const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (!isRunning) return;
 
-            // Spawn burst particles when audio is high
-            if (isActive && audioLevel > 0.3 && particlesRef.current.length < 150) {
-                for (let i = 0; i < 5; i++) {
-                    particlesRef.current.push(new Particle());
+            frameLimiterRef.current(() => {
+                fpsMonitorRef.current.tick();
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Spawn burst particles when audio is high (with limit)
+                if (isActive && audioLevel > 0.3 && particlesRef.current.length < 150) {
+                    for (let i = 0; i < 5; i++) {
+                        particlesRef.current.push(new Particle());
+                    }
                 }
-            }
 
-            // Update and draw particles
-            particlesRef.current.forEach(particle => {
-                particle.update(audioLevel);
-                particle.draw();
+                // Update and draw particles
+                particlesRef.current.forEach(particle => {
+                    particle.update(audioLevel);
+                    particle.draw();
+                });
+
+                // Remove excess particles when not active
+                if (!isActive && particlesRef.current.length > 30) {
+                    particlesRef.current = particlesRef.current.slice(0, 30);
+                }
             });
-
-            // Remove excess particles when not active
-            if (!isActive && particlesRef.current.length > 30) {
-                particlesRef.current = particlesRef.current.slice(0, 30);
-            }
 
             animationRef.current = requestAnimationFrame(animate);
         };
@@ -105,19 +133,43 @@ export function ParticleCanvas({ theme, audioLevel, isActive }) {
         animate();
 
         return () => {
+            isRunning = false;
             window.removeEventListener('resize', resizeCanvas);
+            clearInterval(statsInterval);
             if (animationRef.current) {
                 cancelAnimationFrame(animationRef.current);
             }
         };
-    }, [theme, audioLevel, isActive]);
+    }, [theme, audioLevel, isActive, targetFPS]);
 
     return (
-        <canvas
-            ref={canvasRef}
-            className="particle-canvas"
-            style={{ opacity: isActive ? 1 : 0.4 }}
-        />
+        <>
+            <canvas
+                ref={canvasRef}
+                className="particle-canvas"
+                style={{ opacity: isActive ? 1 : 0.4 }}
+                onDoubleClick={() => setShowStats(!showStats)}
+            />
+            {showStats && (
+                <div style={{
+                    position: 'fixed',
+                    top: '10px',
+                    right: '10px',
+                    background: 'rgba(0, 0, 0, 0.8)',
+                    color: '#0f0',
+                    padding: '10px',
+                    borderRadius: '5px',
+                    fontFamily: 'monospace',
+                    fontSize: '12px',
+                    zIndex: 9999,
+                    pointerEvents: 'none'
+                }}>
+                    <div>FPS: {fps}</div>
+                    <div>Particles: {particleCount}</div>
+                    <div>Target: {targetFPS} fps</div>
+                </div>
+            )}
+        </>
     );
 }
 

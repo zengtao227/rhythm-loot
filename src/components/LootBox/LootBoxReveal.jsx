@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { rarityConfig } from '../../themes/themeConfig';
+import { vibrate, playLootBoxSound, screenShake, createParticleBurst } from '../../utils/uiEffects';
 
 /**
  * Loot box opening animation and reward reveal
+ * Enhanced with sound effects, haptic feedback, and particle effects
  */
 export function LootBoxReveal({ reward, theme, onClose, streakBonus }) {
     const [phase, setPhase] = useState('box'); // 'box', 'opening', 'reveal'
@@ -10,28 +12,50 @@ export function LootBoxReveal({ reward, theme, onClose, streakBonus }) {
 
     const rarityInfo = rarityConfig[reward.rarity];
     const isLegendary = reward.rarity === 'legendary';
+    const isEpic = reward.rarity === 'epic';
 
-    const handleBoxClick = () => {
+    const handleBoxClick = (e) => {
         if (phase !== 'box') return;
 
+        // Haptic feedback on tap
+        vibrate(100);
+        
         setShaking(true);
 
         // Shake animation
         setTimeout(() => {
             setShaking(false);
             setPhase('opening');
+            
+            // Opening sound
+            playLootBoxSound('common');
+            vibrate([50, 50, 50]);
         }, 600);
 
         // Reveal after opening animation
         setTimeout(() => {
             setPhase('reveal');
 
-            // Screen shake for legendary
+            // Play rarity-specific sound
+            playLootBoxSound(reward.rarity);
+
+            // Visual and haptic effects based on rarity
             if (isLegendary) {
-                document.body.classList.add('screen-shake');
-                setTimeout(() => {
-                    document.body.classList.remove('screen-shake');
-                }, 500);
+                screenShake(3, 600);
+                vibrate([100, 50, 100, 50, 200]);
+                
+                // Create particle burst at center
+                const rect = e.currentTarget.getBoundingClientRect();
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                createParticleBurst(centerX, centerY, rarityInfo.color);
+            } else if (isEpic) {
+                screenShake(2, 400);
+                vibrate([100, 50, 150]);
+            } else if (reward.rarity === 'rare') {
+                vibrate([100, 50, 100]);
+            } else {
+                vibrate(150);
             }
         }, 1200);
     };
