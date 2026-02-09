@@ -115,6 +115,30 @@ export const themes = {
             { id: 'fn_l1', name: 'Golden Scar', rarity: 'legendary', emoji: '🔫', slot: 'hand', image: `${FORTNITE_ASSETS}/quest_fortnite_golden_scar_1770125429253.webp` },
         ],
     },
+    cyberpunk: {
+        id: 'cyberpunk',
+        name: 'Cyber Ops',
+        emoji: '🦾',
+        tagline: 'High-tech warfare!',
+        colors: {
+            primary: '#00ff41', // Matrix Green
+            secondary: '#008F11',
+            accent: '#0d0221',
+            glow: 'rgba(0, 255, 65, 0.6)',
+        },
+        cssClass: 'quest',
+        defaultDuration: 45,
+        rewards: [
+            // Common
+            { id: 'cp_c1', name: 'Slime Blob', rarity: 'common', emoji: '🦠', slot: 'misc', image: '/assets/images/loot/slime_blob.webp' },
+            { id: 'cp_c2', name: 'Cyber Pistol', rarity: 'common', emoji: '🔫', slot: 'hand', image: '/assets/images/loot/cyber_pistol.webp' },
+            // Uncommon
+            { id: 'cp_u1', name: 'Holo Sight', rarity: 'uncommon', emoji: '🎯', slot: 'misc', image: '/assets/images/loot/holo_sight.webp' },
+            // Rare
+            { id: 'cp_r1', name: 'Mecha Spider', rarity: 'rare', emoji: '🕷️', slot: 'misc', image: '/assets/images/loot/mecha_spider.webp' },
+            { id: 'cp_r2', name: 'Plasma Rifle', rarity: 'rare', emoji: '🔋', slot: 'hand', image: '/assets/images/loot/plasma_rifle.webp' },
+        ],
+    },
 };
 
 // Rarity configuration

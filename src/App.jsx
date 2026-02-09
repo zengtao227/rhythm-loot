@@ -206,6 +206,12 @@ function App() {
                             onClick={() => setSelectedTheme('fortnite')}
                             streak={streak} // Shares streak logic with Quest ideally, but for MVP it's separate or same
                         />
+                        <ProfileCard
+                            themeId="cyberpunk"
+                            selected={selectedTheme === 'cyberpunk'}
+                            onClick={() => setSelectedTheme('cyberpunk')}
+                            streak={streak}
+                        />
                     </div>
 
                     {/* Continue Button */}
