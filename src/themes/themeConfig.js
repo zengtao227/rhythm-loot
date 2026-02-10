@@ -30,11 +30,13 @@ export const themes = {
             { id: 'bl_u2', name: 'VIP Lanyard', rarity: 'uncommon', emoji: '🎀', slot: 'neck', image: `${BLINK_ASSETS}/blink_vip_lanyard_v1_1770124180454.webp` },
             { id: 'bl_u3', name: 'Hologram Sticker', rarity: 'uncommon', emoji: '✨', slot: 'misc', image: `${BLINK_ASSETS}/blink_hologram_sticker_v1_1770124195628.webp` },
             { id: 'bl_u4', name: 'Cat Ears Headset', rarity: 'uncommon', emoji: '🎧', slot: 'head', image: `${BLINK_ASSETS}/blink_cat_ears_headset_1769898724226.webp` },
+            { id: 'bl_u5', name: 'Labubu Doll', rarity: 'uncommon', emoji: '🐰', slot: 'misc', image: `${BLINK_ASSETS}/blink_labubu_doll_common.webp` },
             // Rare (15%)
             { id: 'bl_r1', name: 'Crown Headband', rarity: 'rare', emoji: '👑', slot: 'head', image: `${BLINK_ASSETS}/blink_crown_headband_v1_1770124210699.webp` },
             { id: 'bl_r2', name: 'LED Earrings', rarity: 'rare', emoji: '💎', slot: 'head', image: `${BLINK_ASSETS}/blink_led_earrings_1769897104599.webp` },
             { id: 'bl_r3', name: 'Signed Album', rarity: 'rare', emoji: '💿', slot: 'misc', image: `${BLINK_ASSETS}/blink_signed_album_1769897118991.webp` },
             { id: 'bl_r4', name: 'Pink Sparkle Mic', rarity: 'rare', emoji: '🎤', slot: 'hand', image: `${BLINK_ASSETS}/blink_diamond_microphone_v1_new_1770124226307.webp` },
+            { id: 'bl_r5', name: 'Labubu Space Suit', rarity: 'rare', emoji: '👩‍🚀', slot: 'misc', image: `${BLINK_ASSETS}/blink_labubu_space_suit_rare.webp` },
             // Epic (4%)
             { id: 'bl_e1', name: 'Golden Lightstick', rarity: 'epic', emoji: '🌟', slot: 'hand', image: `${BLINK_ASSETS}/blink_golden_lightstick_1769897131759.webp` },
             { id: 'bl_e2', name: 'Angel Wings', rarity: 'epic', emoji: '👼', slot: 'back', image: `${BLINK_ASSETS}/blink_angel_wings_1769898626049.webp` },
