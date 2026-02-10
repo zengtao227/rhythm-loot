@@ -103,6 +103,31 @@ export function TimerRing({
                 />
             </svg>
 
+            {/* Blink Lightstick Metronome Visual */}
+            {theme === 'blink' && isMetronomeActive && (
+                <div style={{
+                    position: 'absolute',
+                    top: '20%',
+                    left: '50%',
+                    transform: `translate(-50%, 0) rotate(${metronomeBeat % 2 === 0 ? '-15deg' : '15deg'}) scale(${metronomeBeat === 0 ? 1.3 : 1})`,
+                    transition: 'transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                    filter: `drop-shadow(0 0 ${metronomeBeat === 0 ? '15px' : '8px'} #ff2d7f)`,
+                    zIndex: 20,
+                    pointerEvents: 'none'
+                }}>
+                    <svg width="70" height="70" viewBox="0 0 100 100" fill="none">
+                        {/* Black Handle */}
+                        <rect x="46" y="55" width="8" height="40" rx="3" fill="#111" stroke="#ff2d7f" strokeWidth="1" />
+                        {/* Left Heart Lobe */}
+                        <path d="M50 55 C 50 55, 20 45, 20 25 C 20 8, 45 8, 50 35" fill="#ff6b9d" stroke="#fff" strokeWidth="2" />
+                        {/* Right Heart Lobe */}
+                        <path d="M50 55 C 50 55, 80 45, 80 25 C 80 8, 55 8, 50 35" fill="#ff6b9d" stroke="#fff" strokeWidth="2" />
+                        {/* Center Glow */}
+                        <circle cx="50" cy="35" r="5" fill="#fff" fillOpacity="0.8" />
+                    </svg>
+                </div>
+            )}
+
             {/* Center Content */}
             <div className="timer-center">
                 <div className={`timer-display ${theme}`}>
