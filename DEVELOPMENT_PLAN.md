@@ -160,8 +160,8 @@ All images generated (including Mecha Mask and Chug Jug). All migrated to public
 - Korok Seed (Common) ✅
 - Hylian Shield (Uncommon) ✅
 - Ocarina of Time (Rare) ✅
-- Fairy Bottle (Uncommon)
-- Light Arrows (Epic)
+- Fairy Bottle (Uncommon) ✅
+- Light Arrows (Epic) ✅
 
 ---
 

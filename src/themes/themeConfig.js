@@ -72,6 +72,7 @@ export const themes = {
             { id: 'qt_u4', name: 'Crystal Shard', rarity: 'uncommon', emoji: '💠', slot: 'misc', image: `${QUEST_ASSETS}/quest_crystal_shard_v1_1769897382909.webp` },
             { id: 'qt_u5', name: 'Power Star', rarity: 'uncommon', emoji: '⭐', slot: 'misc', image: `${QUEST_ASSETS}/quest_power_star_v1_1769897356747.webp` },
             { id: 'qt_u6', name: 'Hylian Shield', rarity: 'uncommon', emoji: '🛡️', slot: 'hand', image: `${QUEST_ASSETS}/zelda_hylian_shield_uncommon_1770299620948.webp` },
+            { id: 'qt_u7', name: 'Fairy Bottle', rarity: 'uncommon', emoji: '🧚', slot: 'misc', image: `${QUEST_ASSETS}/zelda_fairy_bottle_uncommon.webp` },
             // Rare (15%)
             { id: 'qt_r1', name: 'Diamond Pickaxe', rarity: 'rare', emoji: '⛏️', slot: 'hand', image: `${QUEST_ASSETS}/quest_diamond_pickaxe_v1_1769897395799.webp` },
             { id: 'qt_r2', name: 'Golden Crown', rarity: 'rare', emoji: '👑', slot: 'head', image: `${QUEST_ASSETS}/quest_golden_crown_1769898741006.webp` },
@@ -82,6 +83,7 @@ export const themes = {
             // Epic (4%)
             { id: 'qt_e1', name: 'Master Sword', rarity: 'epic', emoji: '🔱', slot: 'hand', image: `${QUEST_ASSETS}/quest_master_sword_v1_1769897407601.webp` },
             { id: 'qt_e2', name: 'Devil Fruit', rarity: 'epic', emoji: '🍇', slot: 'misc', image: `${QUEST_ASSETS}/quest_devil_fruit_v1_new_1769897489828.webp` },
+            { id: 'qt_e3', name: 'Light Arrows', rarity: 'epic', emoji: '🏹', slot: 'hand', image: `${QUEST_ASSETS}/zelda_light_arrows_epic.webp` },
             // Legendary (1%)
             { id: 'qt_l1', name: 'Triforce Fragment', rarity: 'legendary', emoji: '🔺', slot: 'misc', image: `${QUEST_ASSETS}/quest_triforce_v1_new_1769897503305.webp` },
         ],
@@ -134,9 +136,13 @@ export const themes = {
             { id: 'cp_c2', name: 'Cyber Pistol', rarity: 'common', emoji: '🔫', slot: 'hand', image: '/assets/images/loot/cyber_pistol.webp' },
             // Uncommon
             { id: 'cp_u1', name: 'Holo Sight', rarity: 'uncommon', emoji: '🎯', slot: 'misc', image: '/assets/images/loot/holo_sight.webp' },
+            { id: 'cp_u2', name: 'Shadow Drone', rarity: 'uncommon', emoji: '🛸', slot: 'misc', image: '/assets/images/loot/shadow_drone.webp' },
+            { id: 'cp_u3', name: 'Tactical Visor', rarity: 'uncommon', emoji: '🥽', slot: 'head', image: '/assets/images/loot/tactical_visor.webp' },
             // Rare
             { id: 'cp_r1', name: 'Mecha Spider', rarity: 'rare', emoji: '🕷️', slot: 'misc', image: '/assets/images/loot/mecha_spider.webp' },
             { id: 'cp_r2', name: 'Plasma Rifle', rarity: 'rare', emoji: '🔋', slot: 'hand', image: '/assets/images/loot/plasma_rifle.webp' },
+            // Epic
+            { id: 'cp_e1', name: 'Cyber Railgun', rarity: 'epic', emoji: '⚡', slot: 'hand', image: '/assets/images/loot/cyber_railgun.webp' },
         ],
     },
 };
