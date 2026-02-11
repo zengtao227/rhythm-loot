@@ -40,6 +40,7 @@ export const themes = {
             // Epic (4%)
             { id: 'bl_e1', name: 'Golden Lightstick', rarity: 'epic', emoji: '🌟', slot: 'hand', image: `${BLINK_ASSETS}/blink_golden_lightstick_1769897131759.webp` },
             { id: 'bl_e2', name: 'Angel Wings', rarity: 'epic', emoji: '👼', slot: 'back', image: `${BLINK_ASSETS}/blink_angel_wings_1769898626049.webp` },
+            { id: 'bl_e3', name: 'Mega Bunny Doll', rarity: 'epic', emoji: '🐰', slot: 'misc', image: `${BLINK_ASSETS}/blink_labubu_space_suit_rare.webp` },
             // Legendary (1%)
             { id: 'bl_l1', name: 'Diamond Microphone', rarity: 'legendary', emoji: '💖', slot: 'hand', image: `${BLINK_ASSETS}/blink_diamond_microphone_v1_new_1770124226307.webp` },
             { id: 'bl_l2', name: 'Galaxy Stage Outfit', rarity: 'legendary', emoji: '👗', slot: 'body', image: `${BLINK_ASSETS}/blink_galaxy_outfit_1769898660427.webp` },
@@ -114,6 +115,8 @@ export const themes = {
             // Rare (15%)
             { id: 'fn_r1', name: 'Battle Bus', rarity: 'rare', emoji: '🚌', slot: 'misc', image: `${FORTNITE_ASSETS}/quest_fortnite_battle_bus_1770125403708.webp` },
             { id: 'fn_r2', name: 'Chug Jug', rarity: 'rare', emoji: '🍶', slot: 'misc', image: `${FORTNITE_ASSETS}/fortnite_chug_jug_rare_1770299558096.webp` },
+            { id: 'fn_r3', name: 'Giant Cannon', rarity: 'rare', emoji: '💥', slot: 'hand', image: `${FORTNITE_ASSETS}/quest_fortnite_giant_cannon.webp` },
+            // Epic (4%)
             { id: 'fn_e1', name: 'Mecha Mask', rarity: 'epic', emoji: '🤖', slot: 'head', image: `${FORTNITE_ASSETS}/fortnite_mecha_mask_epic_1770299528557.webp` },
             // Legendary (1%)
             { id: 'fn_l1', name: 'Golden Scar', rarity: 'legendary', emoji: '🔫', slot: 'hand', image: `${FORTNITE_ASSETS}/quest_fortnite_golden_scar_1770125429253.webp` },
@@ -145,6 +148,7 @@ export const themes = {
             { id: 'cp_r2', name: 'Plasma Rifle', rarity: 'rare', emoji: '🔋', slot: 'hand', image: '/assets/images/loot/plasma_rifle.webp' },
             // Epic
             { id: 'cp_e1', name: 'Cyber Railgun', rarity: 'epic', emoji: '⚡', slot: 'hand', image: '/assets/images/loot/cyber_railgun.webp' },
+            { id: 'cp_e2', name: 'Plasma Doom Cannon', rarity: 'epic', emoji: '🏮', slot: 'hand', image: '/assets/images/loot/plasma_rifle.webp' },
         ],
     },
 };
