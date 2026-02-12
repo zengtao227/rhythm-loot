@@ -4,7 +4,7 @@ import { useMemo } from 'react';
  * Circular progress timer with gradient stroke
  * Clean version - lightsticks are rendered separately in App.jsx
  */
-function TimerRing({
+const TimerCircle = ({
     progress,
     theme,
     elapsedTime,
@@ -13,7 +13,7 @@ function TimerRing({
     audioLevel,
     isMetronomeActive,
     metronomeBeat
-}) {
+}) => {
     const radius = 100;
     const strokeWidth = 8;
     const circumference = 2 * Math.PI * radius;
@@ -35,7 +35,7 @@ function TimerRing({
     const getThemeColor = (t) => {
         if (t === 'blink') return '#ff2d7f';
         if (t === 'fortnite') return '#9d4edd';
-        return '#00d4ff';
+        return '#00d4ff'; // quest default
     };
 
     const themeColor = getThemeColor(theme);
@@ -43,7 +43,13 @@ function TimerRing({
     return (
         <div className="timer-ring" style={{
             transform: `scale(${pulseScale})`,
-            transition: isMetronomeActive ? 'transform 0.05s ease-out' : 'transform 0.1s ease-out'
+            transition: isMetronomeActive ? 'transform 0.05s ease-out' : 'transform 0.1s ease-out',
+            position: 'relative',
+            width: '280px',
+            height: '280px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
         }}>
             {/* SVG Gradient Definitions */}
             <svg
@@ -70,12 +76,15 @@ function TimerRing({
             </svg>
 
             {/* Timer Ring */}
-            <svg viewBox="0 0 280 280">
+            <svg viewBox="0 0 280 280" style={{ position: 'absolute', inset: 0, transform: 'rotate(-90deg)' }}>
                 <circle
                     className="timer-ring-bg"
                     cx="140"
                     cy="140"
                     r={radius}
+                    fill="none"
+                    stroke="#333"
+                    strokeWidth={strokeWidth}
                     style={{
                         stroke: isMetronomeActive && metronomeBeat === 0
                             ? `${themeColor}4D`
@@ -87,8 +96,12 @@ function TimerRing({
                     cx="140"
                     cy="140"
                     r={radius}
+                    fill="none"
+                    stroke={`url(#${theme}Gradient)`}
+                    strokeWidth={strokeWidth}
                     strokeDasharray={circumference}
                     strokeDashoffset={strokeDashoffset}
+                    strokeLinecap="round"
                     style={{
                         filter: isMetronomeActive
                             ? `drop-shadow(0 0 ${metronomeBeat === 0 ? '15px' : '5px'} ${themeColor})`
@@ -98,25 +111,25 @@ function TimerRing({
             </svg>
 
             {/* Center Content */}
-            <div className="timer-center">
-                <div className={`timer-display ${theme}`}>
+            <div className="timer-center" style={{ zIndex: 10, textAlign: 'center' }}>
+                <div className={`timer-display ${theme}`} style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'white' }}>
                     {formatTime(elapsedTime)}
                 </div>
-                <div className="text-secondary" style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>
+                <div className="text-secondary" style={{ fontSize: '0.9rem', marginTop: '0.5rem', color: '#888' }}>
                     / {formatTime(targetTime)}
                 </div>
                 <div
                     className="flex-center gap-sm mt-md"
-                    style={{ fontSize: '0.8rem' }}
+                    style={{ fontSize: '0.8rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '1rem' }}
                 >
                     <div className={`status-dot ${isActive ? 'listening' : 'paused'}`} />
-                    <span className="text-muted">
+                    <span className="text-muted" style={{ color: '#888' }}>
                         {isActive ? 'Playing...' : 'Waiting...'}
                     </span>
                 </div>
             </div>
         </div>
     );
-}
+};
 
-export default TimerRing;
+export default TimerCircle;

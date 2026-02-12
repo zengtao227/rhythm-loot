@@ -5,7 +5,7 @@ import { useInventory } from './hooks/useInventory';
 import { useMetronome } from './hooks/useMetronome';
 import { injectAnimations } from './utils/uiEffects';
 import ProfileCard from './components/UI/ProfileCard';
-import TimerRing from './components/UI/TimerRing';
+import TimerCircle from './components/UI/TimerCircle';
 import AudioBars from './components/AudioViz/AudioBars';
 import ParticleCanvas from './components/AudioViz/ParticleCanvas';
 import LootBoxReveal from './components/LootBox/LootBoxReveal';
@@ -442,7 +442,7 @@ function App() {
                         </div>
                     )}
 
-                    {/* ===== Blink Lightsticks (above TimerRing) ===== */}
+                    {/* ===== Blink Lightsticks (above TimerCircle) ===== */}
                     {selectedTheme === 'blink' && (
                         <div style={{
                             display: 'flex',
@@ -510,11 +510,11 @@ function App() {
                     )}
 
                     {/* Timer Ring */}
-                    <TimerRing
+                    <TimerCircle
                         progress={progress}
                         theme={selectedTheme}
                         elapsedTime={elapsedSeconds}
-                        targetTime={targetDuration * 60}
+                        targetTime={30}
                         isActive={isActive}
                         audioLevel={audioLevel}
                         isMetronomeActive={metronomeActive}
