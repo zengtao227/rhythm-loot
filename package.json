@@ -1,7 +1,7 @@
 {
   "name": "rhythm-loot",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "description": "A gamified music practice app with collectible rewards",
   "scripts": {
