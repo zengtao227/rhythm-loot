@@ -5,7 +5,7 @@ import { useInventory } from './hooks/useInventory';
 import { useMetronome } from './hooks/useMetronome';
 import { injectAnimations } from './utils/uiEffects';
 import ProfileCard from './components/UI/ProfileCard';
-import TimerCircle from './components/UI/TimerCircle';
+import RhythmTimer from './components/UI/RhythmTimer';
 import AudioBars from './components/AudioViz/AudioBars';
 import ParticleCanvas from './components/AudioViz/ParticleCanvas';
 import LootBoxReveal from './components/LootBox/LootBoxReveal';
@@ -179,7 +179,6 @@ function App() {
                         <p className="text-muted">Choose your stage</p>
                     </div>
 
-                    {/* Profile Cards */}
                     <div style={{
                         display: 'grid',
                         gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -188,30 +187,15 @@ function App() {
                         margin: '0 auto',
                         width: '100%',
                     }}>
-                        <ProfileCard
-                            themeId="blink"
-                            selected={selectedTheme === 'blink'}
-                            onClick={() => setSelectedTheme('blink')}
-                            streak={streak} // Note: Blink streak
-                        />
-                        <ProfileCard
-                            themeId="quest"
-                            selected={selectedTheme === 'quest'}
-                            onClick={() => setSelectedTheme('quest')}
-                            streak={streak} // Note: Quest streak
-                        />
-                        <ProfileCard
-                            themeId="fortnite"
-                            selected={selectedTheme === 'fortnite'}
-                            onClick={() => setSelectedTheme('fortnite')}
-                            streak={streak} // Shares streak logic with Quest ideally, but for MVP it's separate or same
-                        />
-                        <ProfileCard
-                            themeId="cyberpunk"
-                            selected={selectedTheme === 'cyberpunk'}
-                            onClick={() => setSelectedTheme('cyberpunk')}
-                            streak={streak}
-                        />
+                        {Object.values(themes).map(t => (
+                            <ProfileCard
+                                key={t.id}
+                                themeId={t.id}
+                                selected={selectedTheme === t.id}
+                                onClick={() => setSelectedTheme(t.id)}
+                                streak={streak}
+                            />
+                        ))}
                     </div>
 
                     {/* Continue Button */}
@@ -442,24 +426,28 @@ function App() {
                         </div>
                     )}
 
-                    {/* ===== Blink Lightsticks (above TimerCircle) ===== */}
-                    {selectedTheme === 'blink' && (
+                    {/* ========== RHYTHM VISUALS (Lightsticks / Blasters) ========== */}
+                    {screen === SCREEN.PRACTICE && theme.beatVisual === 'lightstick' && (
                         <div style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'flex-end',
-                            gap: '100px',
-                            height: '160px',
-                            marginTop: '40px',
-                            marginBottom: '-10px'
+                            display: 'flex', justifyContent: 'center', alignItems: 'flex-end',
+                            gap: '100px', height: '160px', marginTop: '40px', marginBottom: '-10px', position: 'relative'
                         }}>
+                            {/* Star Burst Effect on Beat 1 */}
+                            {metronomeActive && currentBeat === 0 && (
+                                <>
+                                    <div className="beat-star beat-burst-active" style={{ left: 'calc(50% - 75px)', bottom: '130px', color: '#00ffff' }}>✨</div>
+                                    <div className="beat-star beat-burst-active" style={{ left: 'calc(50% - 85px)', bottom: '140px', color: '#ff6bef' }}>⭐</div>
+                                    <div className="beat-star beat-burst-active" style={{ left: 'calc(50% + 75px)', bottom: '130px', color: '#ffe066' }}>✨</div>
+                                    <div className="beat-star beat-burst-active" style={{ left: 'calc(50% + 85px)', bottom: '140px', color: '#ffffff' }}>⭐</div>
+                                </>
+                            )}
+
                             {/* Left Lightstick */}
                             <div style={{
-                                width: '50px',
-                                height: '150px',
-                                transformOrigin: 'bottom center',
+                                width: '50px', height: '150px', transformOrigin: 'bottom center',
                                 animation: `swayLeft ${metronomeActive ? (60 / bpm) : 1.8}s ease-in-out infinite`,
-                                color: '#00e5ff',
+                                filter: currentBeat === 0 ? 'brightness(1.5) contrast(1.2)' : 'none',
+                                transition: 'filter 0.1s ease'
                             }}>
                                 <svg viewBox="0 0 50 150" width="100%" height="100%">
                                     <defs>
@@ -468,55 +456,20 @@ function App() {
                                             <stop offset="40%" stopColor="#ff6bef" stopOpacity="0.9" />
                                             <stop offset="100%" stopColor="#ff2d7f" stopOpacity="0.7" />
                                         </linearGradient>
-                                        <radialGradient id="topGlowL" cx="50%" cy="30%" r="50%">
-                                            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.95" />
-                                            <stop offset="50%" stopColor="#00ffff" stopOpacity="0.6" />
-                                            <stop offset="100%" stopColor="#00ffff" stopOpacity="0" />
-                                        </radialGradient>
-                                        <filter id="neonBlurL">
-                                            <feGaussianBlur stdDeviation="3" result="blur" />
-                                            <feMerge>
-                                                <feMergeNode in="blur" />
-                                                <feMergeNode in="SourceGraphic" />
-                                            </feMerge>
-                                        </filter>
+                                        <filter id="neonBlurL"><feGaussianBlur stdDeviation="3" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                                     </defs>
-                                    {/* Glowing body */}
-                                    <rect x="18" y="10" width="14" height="90" rx="7"
-                                        fill="url(#stickGlowL)" filter="url(#neonBlurL)" />
-                                    {/* Top glow orb */}
-                                    <circle cx="25" cy="15" r="14"
-                                        fill="url(#topGlowL)" filter="url(#neonBlurL)" />
-                                    {/* Handle */}
-                                    <rect x="21" y="100" width="8" height="45" rx="4"
-                                        fill="#888" stroke="#aaa" strokeWidth="0.5" />
-                                    {/* Handle grip lines */}
-                                    <line x1="22" y1="110" x2="28" y2="110" stroke="#666" strokeWidth="0.8" />
-                                    <line x1="22" y1="118" x2="28" y2="118" stroke="#666" strokeWidth="0.8" />
-                                    <line x1="22" y1="126" x2="28" y2="126" stroke="#666" strokeWidth="0.8" />
-                                    {/* Sparkle dots on beat */}
-                                    <circle cx="10" cy="20" r="2.5"
-                                        fill="#fff" fillOpacity={metronomeActive && currentBeat === 0 ? '1' : '0.3'}>
-                                        <animate attributeName="r" values="2;3.5;2" dur="0.8s" repeatCount="indefinite" />
-                                    </circle>
-                                    <circle cx="40" cy="25" r="2"
-                                        fill="#fff" fillOpacity={metronomeActive && currentBeat === 0 ? '1' : '0.3'}>
-                                        <animate attributeName="r" values="1.5;3;1.5" dur="1.2s" repeatCount="indefinite" />
-                                    </circle>
-                                    <circle cx="15" cy="45" r="1.5"
-                                        fill="#00ffff" fillOpacity="0.6">
-                                        <animate attributeName="fillOpacity" values="0.3;0.8;0.3" dur="1.5s" repeatCount="indefinite" />
-                                    </circle>
+                                    <rect x="18" y="10" width="14" height="90" rx="7" fill="url(#stickGlowL)" filter="url(#neonBlurL)" />
+                                    <circle cx="25" cy="15" r="14" fill="white" fillOpacity={currentBeat === 0 ? 0.9 : 0.4} filter="url(#neonBlurL)" />
+                                    <rect x="21" y="100" width="8" height="45" rx="4" fill="#888" />
                                 </svg>
                             </div>
 
                             {/* Right Lightstick */}
                             <div style={{
-                                width: '50px',
-                                height: '150px',
-                                transformOrigin: 'bottom center',
+                                width: '50px', height: '150px', transformOrigin: 'bottom center',
                                 animation: `swayRight ${metronomeActive ? (60 / bpm) : 1.8}s ease-in-out infinite`,
-                                color: '#ff91b8',
+                                filter: currentBeat === 0 ? 'brightness(1.5) contrast(1.2)' : 'none',
+                                transition: 'filter 0.1s ease'
                             }}>
                                 <svg viewBox="0 0 50 150" width="100%" height="100%">
                                     <defs>
@@ -525,52 +478,89 @@ function App() {
                                             <stop offset="40%" stopColor="#ff8a3d" stopOpacity="0.9" />
                                             <stop offset="100%" stopColor="#ff2d7f" stopOpacity="0.7" />
                                         </linearGradient>
-                                        <radialGradient id="topGlowR" cx="50%" cy="30%" r="50%">
-                                            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.95" />
-                                            <stop offset="50%" stopColor="#ffe066" stopOpacity="0.6" />
-                                            <stop offset="100%" stopColor="#ffe066" stopOpacity="0" />
-                                        </radialGradient>
-                                        <filter id="neonBlurR">
-                                            <feGaussianBlur stdDeviation="3" result="blur" />
-                                            <feMerge>
-                                                <feMergeNode in="blur" />
-                                                <feMergeNode in="SourceGraphic" />
-                                            </feMerge>
-                                        </filter>
                                     </defs>
-                                    {/* Glowing body */}
-                                    <rect x="18" y="10" width="14" height="90" rx="7"
-                                        fill="url(#stickGlowR)" filter="url(#neonBlurR)" />
-                                    {/* Top glow orb */}
-                                    <circle cx="25" cy="15" r="14"
-                                        fill="url(#topGlowR)" filter="url(#neonBlurR)" />
-                                    {/* Handle */}
-                                    <rect x="21" y="100" width="8" height="45" rx="4"
-                                        fill="#888" stroke="#aaa" strokeWidth="0.5" />
-                                    {/* Handle grip lines */}
-                                    <line x1="22" y1="110" x2="28" y2="110" stroke="#666" strokeWidth="0.8" />
-                                    <line x1="22" y1="118" x2="28" y2="118" stroke="#666" strokeWidth="0.8" />
-                                    <line x1="22" y1="126" x2="28" y2="126" stroke="#666" strokeWidth="0.8" />
-                                    {/* Sparkle dots on beat */}
-                                    <circle cx="10" cy="20" r="2.5"
-                                        fill="#fff" fillOpacity={metronomeActive && currentBeat === 0 ? '1' : '0.3'}>
-                                        <animate attributeName="r" values="2;3.5;2" dur="0.8s" repeatCount="indefinite" />
-                                    </circle>
-                                    <circle cx="40" cy="25" r="2"
-                                        fill="#fff" fillOpacity={metronomeActive && currentBeat === 0 ? '1' : '0.3'}>
-                                        <animate attributeName="r" values="1.5;3;1.5" dur="1.2s" repeatCount="indefinite" />
-                                    </circle>
-                                    <circle cx="35" cy="45" r="1.5"
-                                        fill="#ffe066" fillOpacity="0.6">
-                                        <animate attributeName="fillOpacity" values="0.3;0.8;0.3" dur="1.5s" repeatCount="indefinite" />
-                                    </circle>
+                                    <rect x="18" y="10" width="14" height="90" rx="7" fill="url(#stickGlowR)" filter="url(#neonBlurL)" />
+                                    <circle cx="25" cy="15" r="14" fill="white" fillOpacity={currentBeat === 0 ? 0.9 : 0.4} filter="url(#neonBlurL)" />
+                                    <rect x="21" y="100" width="8" height="45" rx="4" fill="#888" />
                                 </svg>
                             </div>
                         </div>
                     )}
 
+                    {screen === SCREEN.PRACTICE && theme.beatVisual === 'blasters' && (
+                        <div style={{
+                            display: 'flex', justifyContent: 'center', alignItems: 'flex-end',
+                            gap: '120px', height: '200px', marginTop: '0px', marginBottom: '-10px'
+                        }}>
+                            {/* Leo's Plasma Blasters */}
+                            {[1, 2].map(i => {
+                                const isFirstBeat = currentBeat === 0;
+                                const isOtherBeat = currentBeat > 0;
+
+                                return (
+                                    <div key={i} style={{
+                                        width: '70px', height: '140px', transformOrigin: 'bottom center',
+                                        position: 'relative',
+                                        transform: i === 1 ? 'rotate(-15deg)' : 'rotate(15deg)',
+                                        animation: metronomeActive ? (isFirstBeat ? 'shake 0.1s infinite' : 'shake-light 0.1s ease-out') : 'none'
+                                    }}>
+                                        {/* Muzzle Flash (Strong on Beat 1, Subtle Spark on others) */}
+                                        {metronomeActive && (
+                                            <div key={`${currentBeat}-${i}`} style={{
+                                                position: 'absolute', top: '-15px', left: '50%', transform: 'translateX(-50%)',
+                                                width: isFirstBeat ? '100px' : '40px',
+                                                height: isFirstBeat ? '100px' : '40px',
+                                                background: `radial-gradient(circle, #fff 0%, ${isFirstBeat ? '#7b2cbf' : '#00d4ff'} 70%, transparent 100%)`,
+                                                borderRadius: '50%',
+                                                filter: 'blur(3px)',
+                                                opacity: isFirstBeat ? 1 : 0.8,
+                                                animation: isFirstBeat ? 'starBurst 0.25s ease-out' : 'flareGlow 0.15s ease-out',
+                                                zIndex: 1
+                                            }} />
+                                        )}
+
+                                        <svg viewBox="0 0 60 120" width="100%" height="100%" style={{ overflow: 'visible' }}>
+                                            <defs>
+                                                <filter id="neonBlurQuest">
+                                                    <feGaussianBlur stdDeviation="3" result="blur" />
+                                                    <feMerge>
+                                                        <feMergeNode in="blur" />
+                                                        <feMergeNode in="SourceGraphic" />
+                                                    </feMerge>
+                                                </filter>
+                                            </defs>
+
+                                            {/* Gun Body */}
+                                            <rect x="15" y="30" width="30" height="70" rx="4" fill="#1a1a1a" stroke="#444" strokeWidth="2" />
+                                            <rect x="10" y="45" width="40" height="20" rx="2" fill="#333" />
+
+                                            {/* Barrel (Glows on every beat) */}
+                                            <rect x="25" y="0" width="10" height="40" fill={metronomeActive ? (isFirstBeat ? '#fff' : '#00d4ff') : '#444'} style={{ transition: 'fill 0.05s' }} />
+
+                                            {/* Energy Core - Fixed visibility and rhythmic pulse */}
+                                            <circle
+                                                cx="30"
+                                                cy="55"
+                                                r={metronomeActive ? (isFirstBeat ? 16 : 12) : 10}
+                                                fill={metronomeActive ? (isFirstBeat ? '#ffffff' : '#00d4ff') : '#222'}
+                                                filter="url(#neonBlurQuest)"
+                                                style={{
+                                                    transition: 'all 0.05s ease-out',
+                                                    opacity: metronomeActive ? 1 : 0.4
+                                                }}
+                                            />
+
+                                            {/* Handle */}
+                                            <rect x="22" y="100" width="16" height="30" rx="4" fill="#111" />
+                                        </svg>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    )}
+
                     {/* Timer Ring */}
-                    <TimerCircle
+                    <RhythmTimer
                         progress={progress}
                         theme={selectedTheme}
                         elapsedTime={elapsedSeconds}
@@ -635,6 +625,54 @@ function App() {
                     streakBonus={currentReward.streakBonus}
                     onClose={handleRewardClose}
                 />
+            )}
+
+            {/* ========== PERMISSION ERROR MODAL ========== */}
+            {screen === SCREEN.PRACTICE && audioError && (
+                <div style={{
+                    position: 'fixed',
+                    top: 0, left: 0, right: 0, bottom: 0,
+                    background: 'rgba(0,0,0,0.9)',
+                    zIndex: 10000,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '20px'
+                }}>
+                    <div className="glass-card" style={{ maxWidth: '400px', width: '100%', textAlign: 'center', border: '1px solid var(--text-error, #ff4d4d)' }}>
+                        <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🎙️🚫</div>
+                        <h2 className="text-secondary mb-md">Microphone Disabled</h2>
+                        <p className="text-muted mb-lg">
+                            Rhythm & Loot needs to hear you play to track progress.
+                            <br /><span style={{ fontSize: '0.8em', color: 'var(--text-error, #ff4d4d)' }}>Error: {audioError}</span>
+                        </p>
+                        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '15px', borderRadius: '12px', marginBottom: '20px', textAlign: 'left' }}>
+                            <p className="text-sm text-secondary mb-xs"><strong>How to enable:</strong></p>
+                            <ol className="text-xs text-muted" style={{ paddingLeft: '20px', margin: 0 }}>
+                                <li className="mb-xs">Open device <strong>Settings</strong></li>
+                                <li className="mb-xs">Go to <strong>Apps</strong> &gt; <strong>Rhythm & Loot</strong></li>
+                                <li className="mb-xs">Tap <strong>Permissions</strong></li>
+                                <li>Enable <strong>Microphone</strong></li>
+                            </ol>
+                        </div>
+                        <div className="flex-col gap-md">
+                            <button
+                                className="btn btn-primary w-100"
+                                onClick={() => startListening()}
+                            >
+                                I've Enabled It, Retry
+                            </button>
+                            <button
+                                className="btn btn-outline w-100"
+                                onClick={() => {
+                                    handleStopPractice();
+                                }}
+                            >
+                                Cancel Practice
+                            </button>
+                        </div>
+                    </div>
+                </div>
             )}
 
             {/* ========== INVENTORY MODAL ========== */}

@@ -38,43 +38,31 @@ export function useMetronome(bpm = 100, theme = 'blink', isPlaying = false) {
 
         // Sound Design based on Theme
         if (theme === 'blink') {
-            // Electronic Tick (Higher pitch, sharp)
-            if (beat === 0) {
-                // Downbeat (High)
-                osc.frequency.value = 1200;
-            } else {
-                // Upbeat
-                osc.frequency.value = 800;
-            }
-            osc.type = 'square'; // Electronic feel
+            // Deeper Electronic Thump (Frequency Sweep like a kick)
+            const freq = beat === 0 ? 300 : 150;
+            osc.frequency.setValueAtTime(freq, time);
+            osc.frequency.exponentialRampToValueAtTime(40, time + 0.1);
+            osc.type = 'sine'; // Sine for clean sub-bass feel
 
-            // Short envelope
-            envelope.gain.setValueAtTime(0.1, time);
-            envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.05);
+            envelope.gain.setValueAtTime(0.3, time);
+            envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.15);
         } else {
-            // Quest Tick (Wood/Mechanical)
-            if (beat === 0) {
-                osc.frequency.value = 400; // Lower woodblock sound
-            } else {
-                osc.frequency.value = 300;
-            }
-            osc.type = 'triangle'; // Softer, more organic
+            // Quest Thump (Heavy/Deep Thud)
+            osc.frequency.setValueAtTime(beat === 0 ? 150 : 100, time);
+            osc.type = 'triangle';
 
-            // Perky envelope
-            envelope.gain.setValueAtTime(0.1, time);
-            envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.1);
+            envelope.gain.setValueAtTime(0.3, time);
+            envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.2);
         }
 
         osc.start(time);
-        osc.stop(time + 0.1);
+        osc.stop(time + 0.2);
 
-        // Visual Sync (Scheduled via state, slightly delayed to match audio perception)
-        // Note: State updates might not be perfectly frame-accurate compared to Audio, 
-        // but close enough for UI Pulse.
+        // Visual Sync - Adjusted to compensate for React rendering lag (approx 20ms)
         const drawTime = (time - audioContextRef.current.currentTime) * 1000;
         setTimeout(() => {
             setCurrentBeat(beat);
-        }, Math.max(0, drawTime));
+        }, Math.max(0, drawTime - 20)); // Subtract 20ms to 'pre-trigger' UI update before audio buffer starts
 
     }, [theme]);
 

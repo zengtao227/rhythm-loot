@@ -4,7 +4,7 @@ import { useMemo } from 'react';
  * Circular progress timer with gradient stroke
  * Clean version - lightsticks are rendered separately in App.jsx
  */
-const TimerCircle = ({
+const RhythmTimer = ({
     progress,
     theme,
     elapsedTime,
@@ -132,4 +132,4 @@ const TimerCircle = ({
     );
 };
 
-export default TimerCircle;
+export default RhythmTimer;
