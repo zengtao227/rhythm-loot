@@ -143,12 +143,14 @@ export const themes = {
             { id: 'cp_u1', name: 'Holo Sight', rarity: 'uncommon', emoji: '🎯', slot: 'misc', image: '/assets/images/loot/holo_sight.webp' },
             { id: 'cp_u2', name: 'Shadow Drone', rarity: 'uncommon', emoji: '🛸', slot: 'misc', image: '/assets/images/loot/shadow_drone.webp' },
             { id: 'cp_u3', name: 'Tactical Visor', rarity: 'uncommon', emoji: '🥽', slot: 'head', image: '/assets/images/loot/tactical_visor.webp' },
+            { id: 'cp_u4', name: 'Hacking Deck', rarity: 'uncommon', emoji: '📟', slot: 'hand', image: '/assets/images/loot/cyber_hacking_deck_uncommon.webp' },
             // Rare
             { id: 'cp_r1', name: 'Mecha Spider', rarity: 'rare', emoji: '🕷️', slot: 'misc', image: '/assets/images/loot/mecha_spider.webp' },
             { id: 'cp_r2', name: 'Plasma Rifle', rarity: 'rare', emoji: '🔋', slot: 'hand', image: '/assets/images/loot/plasma_rifle.webp' },
             // Epic
             { id: 'cp_e1', name: 'Cyber Railgun', rarity: 'epic', emoji: '⚡', slot: 'hand', image: '/assets/images/loot/cyber_railgun.webp' },
             { id: 'cp_e2', name: 'Plasma Doom Cannon', rarity: 'epic', emoji: '🏮', slot: 'hand', image: '/assets/images/loot/plasma_doom_cannon.webp' },
+            { id: 'cp_e3', name: 'Cyber Katana', rarity: 'epic', emoji: '⚔️', slot: 'hand', image: '/assets/images/loot/cyber_katana_epic.webp' },
         ],
     },
 };
