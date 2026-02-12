@@ -148,7 +148,7 @@ export const themes = {
             { id: 'cp_r2', name: 'Plasma Rifle', rarity: 'rare', emoji: '🔋', slot: 'hand', image: '/assets/images/loot/plasma_rifle.webp' },
             // Epic
             { id: 'cp_e1', name: 'Cyber Railgun', rarity: 'epic', emoji: '⚡', slot: 'hand', image: '/assets/images/loot/cyber_railgun.webp' },
-            { id: 'cp_e2', name: 'Plasma Doom Cannon', rarity: 'epic', emoji: '🏮', slot: 'hand', image: '/assets/images/loot/plasma_rifle.webp' },
+            { id: 'cp_e2', name: 'Plasma Doom Cannon', rarity: 'epic', emoji: '🏮', slot: 'hand', image: '/assets/images/loot/plasma_doom_cannon.webp' },
         ],
     },
 };
