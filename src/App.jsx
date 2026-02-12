@@ -448,62 +448,122 @@ function App() {
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'flex-end',
-                            gap: '80px',
-                            height: '120px',
-                            marginTop: '60px',
+                            gap: '100px',
+                            height: '160px',
+                            marginTop: '40px',
                             marginBottom: '-10px'
                         }}>
                             {/* Left Lightstick */}
                             <div style={{
-                                width: '60px',
-                                height: '110px',
+                                width: '50px',
+                                height: '150px',
                                 transformOrigin: 'bottom center',
-                                transform: metronomeActive
-                                    ? `rotate(${currentBeat % 2 === 0 ? '-35deg' : '5deg'})`
-                                    : 'rotate(-15deg)',
-                                transition: metronomeActive
-                                    ? 'transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1)'
-                                    : 'transform 0.6s ease-in-out',
-                                filter: `drop-shadow(0 0 ${metronomeActive && currentBeat === 0 ? '18px' : '8px'} #ff2d7f)`
+                                animation: `swayLeft ${metronomeActive ? (60 / bpm) : 1.8}s ease-in-out infinite`,
+                                color: '#00e5ff',
                             }}>
-                                <svg viewBox="0 0 60 110" width="100%" height="100%">
+                                <svg viewBox="0 0 50 150" width="100%" height="100%">
+                                    <defs>
+                                        <linearGradient id="stickGlowL" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stopColor="#00ffff" stopOpacity="1" />
+                                            <stop offset="40%" stopColor="#ff6bef" stopOpacity="0.9" />
+                                            <stop offset="100%" stopColor="#ff2d7f" stopOpacity="0.7" />
+                                        </linearGradient>
+                                        <radialGradient id="topGlowL" cx="50%" cy="30%" r="50%">
+                                            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.95" />
+                                            <stop offset="50%" stopColor="#00ffff" stopOpacity="0.6" />
+                                            <stop offset="100%" stopColor="#00ffff" stopOpacity="0" />
+                                        </radialGradient>
+                                        <filter id="neonBlurL">
+                                            <feGaussianBlur stdDeviation="3" result="blur" />
+                                            <feMerge>
+                                                <feMergeNode in="blur" />
+                                                <feMergeNode in="SourceGraphic" />
+                                            </feMerge>
+                                        </filter>
+                                    </defs>
+                                    {/* Glowing body */}
+                                    <rect x="18" y="10" width="14" height="90" rx="7"
+                                        fill="url(#stickGlowL)" filter="url(#neonBlurL)" />
+                                    {/* Top glow orb */}
+                                    <circle cx="25" cy="15" r="14"
+                                        fill="url(#topGlowL)" filter="url(#neonBlurL)" />
                                     {/* Handle */}
-                                    <rect x="25" y="55" width="10" height="50" rx="5" fill="#2a2a2a" stroke="#555" strokeWidth="1" />
-                                    {/* Heart head */}
-                                    <path d="M30 58 C 10 48, 5 25, 30 42 C 55 25, 50 48, 30 58"
-                                        fill="#ff6b9d" stroke="#ffb3d0" strokeWidth="2" strokeLinejoin="round" />
-                                    {/* Inner glow circle */}
-                                    <circle cx="30" cy="38" r="7" fill="white" fillOpacity="0.7" />
-                                    {/* Sparkle dots */}
-                                    <circle cx="18" cy="28" r="2" fill="white" fillOpacity={metronomeActive ? '0.9' : '0.3'} />
-                                    <circle cx="42" cy="28" r="2" fill="white" fillOpacity={metronomeActive ? '0.9' : '0.3'} />
+                                    <rect x="21" y="100" width="8" height="45" rx="4"
+                                        fill="#888" stroke="#aaa" strokeWidth="0.5" />
+                                    {/* Handle grip lines */}
+                                    <line x1="22" y1="110" x2="28" y2="110" stroke="#666" strokeWidth="0.8" />
+                                    <line x1="22" y1="118" x2="28" y2="118" stroke="#666" strokeWidth="0.8" />
+                                    <line x1="22" y1="126" x2="28" y2="126" stroke="#666" strokeWidth="0.8" />
+                                    {/* Sparkle dots on beat */}
+                                    <circle cx="10" cy="20" r="2.5"
+                                        fill="#fff" fillOpacity={metronomeActive && currentBeat === 0 ? '1' : '0.3'}>
+                                        <animate attributeName="r" values="2;3.5;2" dur="0.8s" repeatCount="indefinite" />
+                                    </circle>
+                                    <circle cx="40" cy="25" r="2"
+                                        fill="#fff" fillOpacity={metronomeActive && currentBeat === 0 ? '1' : '0.3'}>
+                                        <animate attributeName="r" values="1.5;3;1.5" dur="1.2s" repeatCount="indefinite" />
+                                    </circle>
+                                    <circle cx="15" cy="45" r="1.5"
+                                        fill="#00ffff" fillOpacity="0.6">
+                                        <animate attributeName="fillOpacity" values="0.3;0.8;0.3" dur="1.5s" repeatCount="indefinite" />
+                                    </circle>
                                 </svg>
                             </div>
 
                             {/* Right Lightstick */}
                             <div style={{
-                                width: '60px',
-                                height: '110px',
+                                width: '50px',
+                                height: '150px',
                                 transformOrigin: 'bottom center',
-                                transform: metronomeActive
-                                    ? `rotate(${currentBeat % 2 === 0 ? '35deg' : '-5deg'})`
-                                    : 'rotate(15deg)',
-                                transition: metronomeActive
-                                    ? 'transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1)'
-                                    : 'transform 0.6s ease-in-out',
-                                filter: `drop-shadow(0 0 ${metronomeActive && currentBeat === 0 ? '18px' : '8px'} #ff2d7f)`
+                                animation: `swayRight ${metronomeActive ? (60 / bpm) : 1.8}s ease-in-out infinite`,
+                                color: '#ff91b8',
                             }}>
-                                <svg viewBox="0 0 60 110" width="100%" height="100%">
+                                <svg viewBox="0 0 50 150" width="100%" height="100%">
+                                    <defs>
+                                        <linearGradient id="stickGlowR" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stopColor="#ffe066" stopOpacity="1" />
+                                            <stop offset="40%" stopColor="#ff8a3d" stopOpacity="0.9" />
+                                            <stop offset="100%" stopColor="#ff2d7f" stopOpacity="0.7" />
+                                        </linearGradient>
+                                        <radialGradient id="topGlowR" cx="50%" cy="30%" r="50%">
+                                            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.95" />
+                                            <stop offset="50%" stopColor="#ffe066" stopOpacity="0.6" />
+                                            <stop offset="100%" stopColor="#ffe066" stopOpacity="0" />
+                                        </radialGradient>
+                                        <filter id="neonBlurR">
+                                            <feGaussianBlur stdDeviation="3" result="blur" />
+                                            <feMerge>
+                                                <feMergeNode in="blur" />
+                                                <feMergeNode in="SourceGraphic" />
+                                            </feMerge>
+                                        </filter>
+                                    </defs>
+                                    {/* Glowing body */}
+                                    <rect x="18" y="10" width="14" height="90" rx="7"
+                                        fill="url(#stickGlowR)" filter="url(#neonBlurR)" />
+                                    {/* Top glow orb */}
+                                    <circle cx="25" cy="15" r="14"
+                                        fill="url(#topGlowR)" filter="url(#neonBlurR)" />
                                     {/* Handle */}
-                                    <rect x="25" y="55" width="10" height="50" rx="5" fill="#2a2a2a" stroke="#555" strokeWidth="1" />
-                                    {/* Heart head */}
-                                    <path d="M30 58 C 10 48, 5 25, 30 42 C 55 25, 50 48, 30 58"
-                                        fill="#ff6b9d" stroke="#ffb3d0" strokeWidth="2" strokeLinejoin="round" />
-                                    {/* Inner glow circle */}
-                                    <circle cx="30" cy="38" r="7" fill="white" fillOpacity="0.7" />
-                                    {/* Sparkle dots */}
-                                    <circle cx="18" cy="28" r="2" fill="white" fillOpacity={metronomeActive ? '0.9' : '0.3'} />
-                                    <circle cx="42" cy="28" r="2" fill="white" fillOpacity={metronomeActive ? '0.9' : '0.3'} />
+                                    <rect x="21" y="100" width="8" height="45" rx="4"
+                                        fill="#888" stroke="#aaa" strokeWidth="0.5" />
+                                    {/* Handle grip lines */}
+                                    <line x1="22" y1="110" x2="28" y2="110" stroke="#666" strokeWidth="0.8" />
+                                    <line x1="22" y1="118" x2="28" y2="118" stroke="#666" strokeWidth="0.8" />
+                                    <line x1="22" y1="126" x2="28" y2="126" stroke="#666" strokeWidth="0.8" />
+                                    {/* Sparkle dots on beat */}
+                                    <circle cx="10" cy="20" r="2.5"
+                                        fill="#fff" fillOpacity={metronomeActive && currentBeat === 0 ? '1' : '0.3'}>
+                                        <animate attributeName="r" values="2;3.5;2" dur="0.8s" repeatCount="indefinite" />
+                                    </circle>
+                                    <circle cx="40" cy="25" r="2"
+                                        fill="#fff" fillOpacity={metronomeActive && currentBeat === 0 ? '1' : '0.3'}>
+                                        <animate attributeName="r" values="1.5;3;1.5" dur="1.2s" repeatCount="indefinite" />
+                                    </circle>
+                                    <circle cx="35" cy="45" r="1.5"
+                                        fill="#ffe066" fillOpacity="0.6">
+                                        <animate attributeName="fillOpacity" values="0.3;0.8;0.3" dur="1.5s" repeatCount="indefinite" />
+                                    </circle>
                                 </svg>
                             </div>
                         </div>

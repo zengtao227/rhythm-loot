@@ -700,6 +700,57 @@ h6 {
   }
 }
 
+/* === Lightstick Animations === */
+@keyframes swayLeft {
+
+  0%,
+  100% {
+    transform: rotate(-30deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes swayRight {
+
+  0%,
+  100% {
+    transform: rotate(30deg);
+  }
+
+  50% {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes lightstickGlow {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 25px currentColor);
+  }
+
+  50% {
+    filter: drop-shadow(0 0 20px currentColor) drop-shadow(0 0 45px currentColor);
+  }
+}
+
+@keyframes beatPulse {
+  0% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* === Responsive === */
 @media (max-width: 768px) {
   .timer-ring {
