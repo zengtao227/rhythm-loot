@@ -442,6 +442,73 @@ function App() {
                         </div>
                     )}
 
+                    {/* ===== Blink Lightsticks (above TimerRing) ===== */}
+                    {selectedTheme === 'blink' && (
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'flex-end',
+                            gap: '80px',
+                            height: '120px',
+                            marginTop: '60px',
+                            marginBottom: '-10px'
+                        }}>
+                            {/* Left Lightstick */}
+                            <div style={{
+                                width: '60px',
+                                height: '110px',
+                                transformOrigin: 'bottom center',
+                                transform: metronomeActive
+                                    ? `rotate(${currentBeat % 2 === 0 ? '-35deg' : '5deg'})`
+                                    : 'rotate(-15deg)',
+                                transition: metronomeActive
+                                    ? 'transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                                    : 'transform 0.6s ease-in-out',
+                                filter: `drop-shadow(0 0 ${metronomeActive && currentBeat === 0 ? '18px' : '8px'} #ff2d7f)`
+                            }}>
+                                <svg viewBox="0 0 60 110" width="100%" height="100%">
+                                    {/* Handle */}
+                                    <rect x="25" y="55" width="10" height="50" rx="5" fill="#2a2a2a" stroke="#555" strokeWidth="1" />
+                                    {/* Heart head */}
+                                    <path d="M30 58 C 10 48, 5 25, 30 42 C 55 25, 50 48, 30 58"
+                                        fill="#ff6b9d" stroke="#ffb3d0" strokeWidth="2" strokeLinejoin="round" />
+                                    {/* Inner glow circle */}
+                                    <circle cx="30" cy="38" r="7" fill="white" fillOpacity="0.7" />
+                                    {/* Sparkle dots */}
+                                    <circle cx="18" cy="28" r="2" fill="white" fillOpacity={metronomeActive ? '0.9' : '0.3'} />
+                                    <circle cx="42" cy="28" r="2" fill="white" fillOpacity={metronomeActive ? '0.9' : '0.3'} />
+                                </svg>
+                            </div>
+
+                            {/* Right Lightstick */}
+                            <div style={{
+                                width: '60px',
+                                height: '110px',
+                                transformOrigin: 'bottom center',
+                                transform: metronomeActive
+                                    ? `rotate(${currentBeat % 2 === 0 ? '35deg' : '-5deg'})`
+                                    : 'rotate(15deg)',
+                                transition: metronomeActive
+                                    ? 'transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                                    : 'transform 0.6s ease-in-out',
+                                filter: `drop-shadow(0 0 ${metronomeActive && currentBeat === 0 ? '18px' : '8px'} #ff2d7f)`
+                            }}>
+                                <svg viewBox="0 0 60 110" width="100%" height="100%">
+                                    {/* Handle */}
+                                    <rect x="25" y="55" width="10" height="50" rx="5" fill="#2a2a2a" stroke="#555" strokeWidth="1" />
+                                    {/* Heart head */}
+                                    <path d="M30 58 C 10 48, 5 25, 30 42 C 55 25, 50 48, 30 58"
+                                        fill="#ff6b9d" stroke="#ffb3d0" strokeWidth="2" strokeLinejoin="round" />
+                                    {/* Inner glow circle */}
+                                    <circle cx="30" cy="38" r="7" fill="white" fillOpacity="0.7" />
+                                    {/* Sparkle dots */}
+                                    <circle cx="18" cy="28" r="2" fill="white" fillOpacity={metronomeActive ? '0.9' : '0.3'} />
+                                    <circle cx="42" cy="28" r="2" fill="white" fillOpacity={metronomeActive ? '0.9' : '0.3'} />
+                                </svg>
+                            </div>
+                        </div>
+                    )}
+
                     {/* Timer Ring */}
                     <TimerRing
                         progress={progress}
